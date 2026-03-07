@@ -3,9 +3,948 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Free Advertising Dashboard</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        /* ── Navbar / Sidebar (dashboard style) ── */
+        .navbardashboard { background-color: #D51B1C !important; }
+
+        .nav-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-images a { width: 80px; }
+        .nav-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .nav-images img:hover { transform: scale(1.1); }
+        .nav-images .nav-link {
+            display: inline-block;
+            padding: 6px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-images .nav-link img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .nav-images .nav-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .sidebar {
+            background-color: #D51B1C;
+            color: #fff;
+        }
+        @media (max-width: 991px) {
+            .sidebar {
+                width: 100%;
+                order: -1;
+                margin-bottom: 15px;
+                position: static !important;
+                height: auto !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-images {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: start;
+                gap: 2rem;
+            }
+            .nav-images a { flex: 1 1 30%; max-width: 80px; }
+        }
+
+        .bgtiktok  { background-color: rgb(228,228,228) !important; }
+        .bgmsgmenu { background-color: #ffffff !important; }
+        .bgaitol   { background-color: rgb(3,45,73) !important; }
+
+        .menulinkicon {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        .signout {
+            margin-top: 1rem !important;
+            font-weight: 400 !important;
+            color: #fff;
+            background-color: transparent;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .signout:hover {
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+        }
+        @media screen and (max-width: 767px) {
+            .signout { margin-top: -1.1rem !important; font-weight: 200 !important; padding: .2rem !important; font-size: .9rem !important; }
+        }
+
+        .menu-icon { font-size: 3rem; font-weight: bold; }
+
+        /* ── Editor / main content area ── */
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #f5f3ee;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ad-content {
+            background-color: #f5f3ee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 640px;
+        }
+        #screen2.container { max-width: 860px; }
+
+        /* ── SCREEN 1 ── */
+        .label { font-size: 14px; color: #222; margin-bottom: 20px; }
+
+        .platform-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .platform-tabs button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #222;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .platform-tabs button:hover,
+        .platform-tabs button.active { background-color: #e0d8f5; }
+
+        .pick-area {
+            background-color: #f9c8d9;
+            border-radius: 20px;
+            padding: 40px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 320px;
+        }
+        .pick-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-ad {
+            padding: 22px 36px;
+            border: none;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            min-width: 160px;
+            text-align: center;
+        }
+        .btn-ad:hover { opacity: 0.85; transform: translateY(-2px); }
+        .btn-upload { background-color: #5264f5; color: #fff; }
+        .btn-plain  { background-color: #111;    color: #fff; }
+
+        /* ── SCREEN 2 ── */
+        #screen2 { display: none; }
+
+        .editor-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .back-btn {
+            background: none;
+            border: 2px solid #222;
+            border-radius: 10px;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: #e0e0e0; }
+
+        .toolbar { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tool-btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .tool-btn:hover { background: #f0eeff; transform: translateY(-1px); }
+        .tool-btn.danger { background: #fff0f0; color: #c0392b; }
+        .tool-btn.danger:hover { background: #ffd5d5; }
+        .tool-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+        .canvas-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #adCanvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            cursor: crosshair;
+        }
+
+        .download-row {
+            margin-top: 16px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .btn-download {
+            background: #111;
+            color: #fff;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .btn-download:hover { opacity: 0.85; transform: translateY(-2px); }
+
+        /* Text input overlay */
+        #textOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1050;
+            justify-content: center;
+            align-items: center;
+        }
+        #textOverlay.show { display: flex; }
+
+        .text-popup {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 24px;
+            width: min(380px, 90vw);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .text-popup h3 { font-size: 16px; font-weight: 700; }
+        .text-popup input[type="text"],
+        .text-popup input[type="range"],
+        .text-popup select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        .text-popup .popup-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .text-popup label { font-size: 13px; color: #555; white-space: nowrap; }
+        .popup-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 4px;
+        }
+        .popup-actions button {
+            padding: 9px 22px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .popup-cancel { background: #f0f0f0; color: #333; }
+        .popup-add    { background: #5264f5; color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .platform-tabs button { font-size: 15px; }
+            .pick-area { padding: 30px 16px; min-height: 260px; }
+            .pick-buttons { flex-direction: column; width: 100%; gap: 14px; }
+            .btn-ad { width: 100%; min-width: unset; padding: 18px 20px; }
+            .editor-header { gap: 8px; }
+            .tool-btn { padding: 8px 10px; font-size: 12px; }
+            .btn-download { width: 100%; text-align: center; }
+            .download-row { justify-content: center; }
+            .container { max-width: 100% !important; }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #preloader .logo {
+            width: 100px;
+            height: 100px;
+            background: url('preloader.png') no-repeat center/cover;
+            animation: zoomEffect 2s infinite ease-in-out;
+        }
+        @keyframes zoomEffect {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.12); }
+            100% { transform: scale(1); }
+        }
+
+        #loadingScreen {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+        }
+    </style>
 </head>
 <body>
-    <h1>free advertising dashboard</h1>
+
+<!-- Preloader (initial page load) -->
+<div id="preloader"><div class="logo"></div></div>
+
+<!-- Loading / auth check screen -->
+<div id="loadingScreen">
+    <div class="text-center">
+        <div class="spinner-border text-danger" role="status"></div>
+        <p class="mt-2 text-muted">Checking login...</p>
+    </div>
+</div>
+
+<!-- Dashboard Container (hidden until auth passes) -->
+<div id="dashboardContainer" style="display:none;">
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbardashboard shadow-sm px-3">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h5">
+                <span class="text-white small" id="welcomeMsg"><br> User</span>
+            </span>
+            <div>
+                <!-- Mobile Menu Button -->
+                <button class="btn btn-lg text-white d-block d-md-none"
+                    type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+                    <i class="bi bi-list menu-icon"></i>
+                </button>
+                <p onclick="logout()" class="text-white signout">
+                    Sign Out <i class="ri-settings-2-line"></i>
+                </p>
+            </div>
+
+            <!-- Mobile Offcanvas Sidebar -->
+            <div style="background-color:#D51B1C; color: white;" class="offcanvas offcanvas-end" tabindex="-1" id="mobileSidebar">
+                <div class="offcanvas-header">
+                    <h5 class="text-white offcanvas-title">Menu</h5>
+                    <button style="color: white;" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="btn text-white w-100 text-start"><i class="bi bi-house-door me-1"></i> Dashboard</a></li>
+                        <li><a href="gamification.html" class="btn text-white w-100 text-start"><i class="bi bi-gift me-1"></i> Rewards</a></li>
+                        <li><a href="freeadvertisingdashbaord.html" class="btn text-white w-100 text-start"><i class="bi bi-megaphone me-1"></i> Free Ads</a></li>
+                        <li><a href="#" class="btn text-white w-100 text-start" onclick="logout()"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Body row: sidebar + main content -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-lg-2 sidebar position-sticky top-0 p-3">
+                <nav class="nav nav-images">
+                    <a target="_blank" href="qr-demo.html" class="nav-link menulinkicon">
+                        <img src="qr-logo.jpeg.jpg" alt="QR">
+                    </a>
+                    <a target="_blank" href="https://www.tiktok.com/@interactivebyimperium?_t=ZN-8zLPHw8KdTL&_r=1"
+                        class="nav-link menulinkicon bgtiktok" id="linkTiktok">
+                        <img src="tiktokimage.png" alt="TikTok">
+                    </a>
+                    <a target="_blank" href="ProfileOptimiser.html" class="nav-link menulinkicon">
+                        <img src="prefeumberlogo.jpg" alt="Profile Optimiser">
+                    </a>
+                    <a target="_blank" href="aitooldashboard.html" class="nav-link menulinkicon bgaitol">
+                        <img src="aitoolimage.png" alt="AI Business Generator">
+                    </a>
+                    <a target="_blank" href="whatsapp-connecter.html" class="nav-link menulinkicon bgmsgmenu">
+                        <img src="msgiconred.png" alt="WhatsApp">
+                    </a>
+                    <a target="_blank" href="shopifymontering.html" class="nav-link menulinkicon bgmsgmenu">
+                        <img src="shopifymotiring.jpg" alt="Shopify">
+                    </a>
+                    <a target="_blank" href="tasktracker.html" class="nav-link menulinkicon bgmsgmenu">
+                        <img src="tasktracker.jpg" alt="Task Tracker">
+                    </a>
+                    <a target="_blank" href="gamification.html" class="nav-link menulinkicon">
+                        <img src="gamification.jpeg" alt="Gamification">
+                    </a>
+                    <a target="_blank" href="pulse-report.html" class="nav-link menulinkicon">
+                        <img src="pulse.jpeg" alt="Pulse">
+                    </a>
+                    <a href="freeadvertisingdashbaord.html" class="nav-link menulinkicon" style="outline: 3px solid #fff;">
+                        <img src="img/freeadvert.jpeg" alt="Free Ads">
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-lg-10 p-4 min-vh-100 ad-content">
+
+                <!-- SCREEN 1: Choose size + background type -->
+                <div class="container" id="screen1">
+                    <p class="label">Choose A Post Size</p>
+                    <div class="platform-tabs">
+                        <button class="active" data-platform="facebook">Facebook</button>
+                        <button data-platform="instagram">Instagram</button>
+                        <button data-platform="tiktok">TikTok</button>
+                    </div>
+                    <div class="pick-area">
+                        <div class="pick-buttons">
+                            <button class="btn-ad btn-upload" id="uploadImageBtn">Upload Image</button>
+                            <input type="file" id="bgFileInput" accept="image/*" style="display:none">
+                            <button class="btn-ad btn-plain" id="plainCanvasBtn">Plain Canvas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCREEN 2: Canvas editor -->
+                <div class="container" id="screen2">
+                    <div class="editor-header">
+                        <button class="back-btn" id="backBtn">&#8592; Back</button>
+                        <div class="toolbar">
+                            <button class="tool-btn" id="addTextBtn">Add Text</button>
+                            <button class="tool-btn" id="addImageBtn">Add Image</button>
+                            <button class="tool-btn" id="editLayerBtn" disabled>Edit</button>
+                            <button class="tool-btn danger" id="deleteLayerBtn" disabled>Delete</button>
+                            <input type="file" id="layerFileInput" accept="image/*" style="display:none">
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="adCanvas"></canvas>
+                    </div>
+                    <div class="download-row">
+                        <button class="btn-download" id="downloadBtn">Download</button>
+                    </div>
+                </div>
+
+            </div><!-- /col-lg-10 -->
+        </div><!-- /row -->
+    </div><!-- /container-fluid -->
+
+</div><!-- /dashboardContainer -->
+
+<!-- Text input popup (fixed overlay, outside flow) -->
+<div id="textOverlay">
+    <div class="text-popup">
+        <h3>Add Text</h3>
+        <input type="text" id="textInput" placeholder="Type your text here..." />
+        <div class="popup-row">
+            <label>Font size</label>
+            <input type="range" id="fontSizeInput" min="16" max="120" value="40" style="flex:1">
+            <span id="fontSizeVal">40</span>px
+        </div>
+        <div class="popup-row">
+            <label>Colour</label>
+            <input type="color" id="textColorInput" value="#ffffff"
+                style="width:48px;height:36px;padding:2px;border-radius:6px;border:1.5px solid #ddd;cursor:pointer">
+        </div>
+        <div class="popup-row">
+            <label>Font</label>
+            <select id="fontFamilyInput" style="flex:1;padding:8px 10px">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="'Courier New'">Courier New</option>
+                <option value="'Times New Roman'">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Impact">Impact</option>
+            </select>
+        </div>
+        <div class="popup-actions">
+            <button class="popup-cancel" id="cancelTextBtn">Cancel</button>
+            <button class="popup-add"    id="confirmTextBtn">Add</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // ── Auth ──
+    window.addEventListener('DOMContentLoaded', () => {
+        const user = localStorage.getItem('user');
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+        const userData = JSON.parse(user);
+        document.getElementById('welcomeMsg').innerHTML =
+            `<span style="font-weight:300;">Welcome 👋 , <br> Logged in As </span><span style="font-weight:500;">${userData.name}</span>`;
+        document.getElementById('loadingScreen').style.display = 'none';
+        document.getElementById('dashboardContainer').style.display = 'block';
+    });
+
+    function logout() {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+    }
+
+    // ── Preloader (initial load) ──
+    window.addEventListener('load', () => {
+        const pre = document.getElementById('preloader');
+        setTimeout(() => {
+            pre.style.transition = 'opacity 0.8s ease';
+            pre.style.opacity = 0;
+            setTimeout(() => { pre.style.display = 'none'; }, 800);
+        }, 3000);
+    });
+
+    // ── Canvas editor ──
+    const SIZES = {
+        facebook:  { w: 1200, h: 630  },
+        instagram: { w: 1080, h: 1080 },
+        tiktok:    { w: 1080, h: 1920 },
+    };
+
+    let activePlatform = 'facebook';
+    let bgImageData    = null;
+    let layers         = [];
+    let selectedIdx    = -1;
+    let editingIdx     = -1;
+
+    let action       = null;
+    let resizeCorner = null;
+    let dragOffX     = 0, dragOffY = 0;
+    let resizeStart  = null;
+
+    const HANDLE_R   = 18;
+    const HANDLE_PAD = 16;
+
+    // Platform tabs
+    document.querySelectorAll('.platform-tabs button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.platform-tabs button').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            activePlatform = btn.dataset.platform;
+        });
+    });
+
+    // Screen helpers
+    function showScreen2() {
+        document.getElementById('screen1').style.display = 'none';
+        document.getElementById('screen2').style.display = 'block';
+        initCanvas();
+    }
+    function showScreen1() {
+        document.getElementById('screen2').style.display = 'none';
+        document.getElementById('screen1').style.display = 'block';
+        bgImageData = null;
+        layers      = [];
+        selectedIdx = -1;
+        action      = null;
+    }
+
+    // Upload bg image
+    document.getElementById('uploadImageBtn').addEventListener('click', () => {
+        document.getElementById('bgFileInput').click();
+    });
+    document.getElementById('bgFileInput').addEventListener('change', function () {
+        const file = this.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            const img = new Image();
+            img.onload = () => { bgImageData = img; showScreen2(); };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        this.value = '';
+    });
+
+    document.getElementById('plainCanvasBtn').addEventListener('click', () => {
+        bgImageData = null; showScreen2();
+    });
+    document.getElementById('backBtn').addEventListener('click', showScreen1);
+
+    // Canvas
+    const canvas = document.getElementById('adCanvas');
+    const ctx    = canvas.getContext('2d');
+
+    function getScale() {
+        return canvas.width / canvas.getBoundingClientRect().width;
+    }
+
+    function initCanvas() {
+        const { w, h } = SIZES[activePlatform];
+        canvas.width  = w;
+        canvas.height = h;
+        layers      = [];
+        selectedIdx = -1;
+        action      = null;
+        scaleCanvas();
+        updateToolbar();
+        redraw();
+    }
+
+    function scaleCanvas() {
+        const { w, h } = SIZES[activePlatform];
+        const maxW  = Math.min(window.innerWidth - 48, 820);
+        const maxH  = Math.min(window.innerHeight * 0.78, 780);
+        let scale   = maxW / w;
+        if (h * scale > maxH) scale = maxH / h;
+        canvas.style.width  = (w * scale) + 'px';
+        canvas.style.height = (h * scale) + 'px';
+    }
+
+    // Draw
+    function redraw(showSel = true) {
+        const { w, h } = SIZES[activePlatform];
+        ctx.clearRect(0, 0, w, h);
+        if (bgImageData) {
+            ctx.drawImage(bgImageData, 0, 0, w, h);
+        } else {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, w, h);
+        }
+        layers.forEach((layer, i) => {
+            drawLayer(layer);
+            if (showSel && i === selectedIdx) drawSelection(layer);
+        });
+    }
+
+    function drawLayer(layer) {
+        if (layer.type === 'image') {
+            ctx.drawImage(layer.img, layer.x, layer.y, layer.dw, layer.dh);
+        } else if (layer.type === 'text') {
+            ctx.save();
+            ctx.font         = `bold ${layer.size}px ${layer.family}`;
+            ctx.fillStyle    = layer.color;
+            ctx.textAlign    = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor  = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur   = 8;
+            ctx.fillText(layer.text, layer.x, layer.y);
+            ctx.restore();
+            ctx.font = `bold ${layer.size}px ${layer.family}`;
+            const tw = ctx.measureText(layer.text).width;
+            const th = layer.size * 1.2;
+            layer.bbox = { x: layer.x - tw / 2, y: layer.y - th / 2, w: tw, h: th };
+        }
+    }
+
+    function getBounds(layer) {
+        if (layer.type === 'image') return { x: layer.x, y: layer.y, w: layer.dw, h: layer.dh };
+        const b = layer.bbox || { x: layer.x, y: layer.y, w: 0, h: 0 };
+        return { x: b.x, y: b.y, w: b.w, h: b.h };
+    }
+
+    function getHandles(layer) {
+        const p = HANDLE_PAD;
+        const b = getBounds(layer);
+        return {
+            tl: { x: b.x - p,       y: b.y - p       },
+            tr: { x: b.x + b.w + p, y: b.y - p       },
+            bl: { x: b.x - p,       y: b.y + b.h + p },
+            br: { x: b.x + b.w + p, y: b.y + b.h + p },
+        };
+    }
+
+    function drawSelection(layer) {
+        const b       = getBounds(layer);
+        const p       = HANDLE_PAD;
+        const handles = getHandles(layer);
+        ctx.save();
+        ctx.strokeStyle = '#5264f5';
+        ctx.lineWidth   = 4;
+        ctx.setLineDash([16, 8]);
+        ctx.strokeRect(b.x - p, b.y - p, b.w + p * 2, b.h + p * 2);
+        ctx.setLineDash([]);
+        const isImg = layer.type === 'image';
+        Object.values(handles).forEach(({ x, y }) => {
+            ctx.beginPath();
+            ctx.arc(x, y, 12, 0, Math.PI * 2);
+            ctx.fillStyle   = isImg ? '#5264f5' : '#aaa';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth   = 3;
+            ctx.stroke();
+        });
+        ctx.restore();
+    }
+
+    // Hit testing
+    function hitHandle(cx, cy, layer) {
+        if (layer.type !== 'image') return null;
+        const handles = getHandles(layer);
+        for (const [corner, pos] of Object.entries(handles)) {
+            if (Math.hypot(cx - pos.x, cy - pos.y) < HANDLE_R) return corner;
+        }
+        return null;
+    }
+
+    function hitLayer(cx, cy) {
+        for (let i = layers.length - 1; i >= 0; i--) {
+            const l = layers[i];
+            if (l.type === 'image') {
+                if (cx >= l.x && cx <= l.x + l.dw && cy >= l.y && cy <= l.y + l.dh) return i;
+            } else if (l.type === 'text' && l.bbox) {
+                const { x, y, w, h } = l.bbox;
+                const p = HANDLE_PAD;
+                if (cx >= x - p && cx <= x + w + p && cy >= y - p && cy <= y + h + p) return i;
+            }
+        }
+        return -1;
+    }
+
+    // Pointer events
+    function canvasCoords(ex, ey) {
+        const scale = getScale();
+        const rect  = canvas.getBoundingClientRect();
+        return { cx: (ex - rect.left) * scale, cy: (ey - rect.top) * scale };
+    }
+
+    function pointerDown(ex, ey) {
+        const { cx, cy } = canvasCoords(ex, ey);
+        if (selectedIdx >= 0 && layers[selectedIdx].type === 'image') {
+            const corner = hitHandle(cx, cy, layers[selectedIdx]);
+            if (corner) {
+                action       = 'resize';
+                resizeCorner = corner;
+                const l      = layers[selectedIdx];
+                resizeStart  = { cx, cy, x: l.x, y: l.y, dw: l.dw, dh: l.dh };
+                return;
+            }
+        }
+        const hit = hitLayer(cx, cy);
+        selectedIdx = hit;
+        updateToolbar();
+        if (hit >= 0) {
+            action   = 'drag';
+            const l  = layers[hit];
+            dragOffX = cx - l.x;
+            dragOffY = cy - l.y;
+        } else {
+            action = null;
+        }
+        redraw();
+    }
+
+    function pointerMove(ex, ey) {
+        if (!action || selectedIdx < 0) return;
+        const { cx, cy } = canvasCoords(ex, ey);
+        const l = layers[selectedIdx];
+        if (action === 'drag') {
+            l.x = cx - dragOffX;
+            l.y = cy - dragOffY;
+        } else if (action === 'resize' && resizeStart) {
+            const { x: ox, y: oy, dw: odw, dh: odh } = resizeStart;
+            const ratio = odw / odh;
+            const dx    = cx - resizeStart.cx;
+            const dy    = cy - resizeStart.cy;
+            if (resizeCorner === 'br') {
+                l.dw = Math.max(40, odw + dx);
+                l.dh = l.dw / ratio;
+            } else if (resizeCorner === 'bl') {
+                const nw = Math.max(40, odw - dx);
+                l.dh     = nw / ratio;
+                l.x      = ox + (odw - nw);
+                l.dw     = nw;
+            } else if (resizeCorner === 'tr') {
+                l.dw     = Math.max(40, odw + dx);
+                const nh = l.dw / ratio;
+                l.y      = oy + (odh - nh);
+                l.dh     = nh;
+            } else if (resizeCorner === 'tl') {
+                const nw = Math.max(40, odw - dx);
+                const nh = nw / ratio;
+                l.x      = ox + (odw - nw);
+                l.y      = oy + (odh - nh);
+                l.dw     = nw;
+                l.dh     = nh;
+            }
+        }
+        redraw();
+    }
+
+    function pointerUp() { action = null; resizeStart = null; }
+
+    canvas.addEventListener('mousedown',  e => pointerDown(e.clientX, e.clientY));
+    canvas.addEventListener('mousemove',  e => pointerMove(e.clientX, e.clientY));
+    canvas.addEventListener('mouseup',    pointerUp);
+    canvas.addEventListener('mouseleave', pointerUp);
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); pointerDown(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+    canvas.addEventListener('touchmove',  e => { e.preventDefault(); pointerMove(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+    canvas.addEventListener('touchend',   pointerUp);
+
+    // Toolbar
+    function updateToolbar() {
+        const hasSel = selectedIdx >= 0;
+        const isText = hasSel && layers[selectedIdx]?.type === 'text';
+        document.getElementById('editLayerBtn').disabled   = !isText;
+        document.getElementById('deleteLayerBtn').disabled = !hasSel;
+    }
+
+    // Add Image layer
+    document.getElementById('addImageBtn').addEventListener('click', () => document.getElementById('layerFileInput').click());
+    document.getElementById('layerFileInput').addEventListener('change', function () {
+        const file = this.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            const img = new Image();
+            img.onload = () => {
+                const { w, h } = SIZES[activePlatform];
+                const ratio = img.width / img.height;
+                const dw    = w * 0.5;
+                const dh    = dw / ratio;
+                layers.push({ type: 'image', img, x: (w - dw) / 2, y: (h - dh) / 2, dw, dh });
+                selectedIdx = layers.length - 1;
+                updateToolbar();
+                redraw();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        this.value = '';
+    });
+
+    // Delete
+    document.getElementById('deleteLayerBtn').addEventListener('click', () => {
+        if (selectedIdx < 0) return;
+        layers.splice(selectedIdx, 1);
+        selectedIdx = -1;
+        updateToolbar();
+        redraw();
+    });
+
+    // Text popup
+    const textOverlay   = document.getElementById('textOverlay');
+    const fontSizeInput = document.getElementById('fontSizeInput');
+    const fontSizeVal   = document.getElementById('fontSizeVal');
+
+    fontSizeInput.addEventListener('input', () => fontSizeVal.textContent = fontSizeInput.value);
+
+    function openTextPopup(idx = -1) {
+        editingIdx = idx;
+        if (idx >= 0) {
+            const l = layers[idx];
+            document.getElementById('textInput').value       = l.text;
+            fontSizeInput.value                               = l.size;
+            fontSizeVal.textContent                           = l.size;
+            document.getElementById('textColorInput').value  = l.color;
+            document.getElementById('fontFamilyInput').value = l.family;
+            document.querySelector('.text-popup h3').textContent = 'Edit Text';
+        } else {
+            document.getElementById('textInput').value       = '';
+            fontSizeInput.value                               = 40;
+            fontSizeVal.textContent                           = 40;
+            document.getElementById('textColorInput').value  = '#ffffff';
+            document.getElementById('fontFamilyInput').value = 'Arial';
+            document.querySelector('.text-popup h3').textContent = 'Add Text';
+        }
+        textOverlay.classList.add('show');
+    }
+
+    document.getElementById('addTextBtn').addEventListener('click',   () => openTextPopup(-1));
+    document.getElementById('editLayerBtn').addEventListener('click', () => {
+        if (selectedIdx >= 0 && layers[selectedIdx].type === 'text') openTextPopup(selectedIdx);
+    });
+    document.getElementById('cancelTextBtn').addEventListener('click', () => textOverlay.classList.remove('show'));
+
+    document.getElementById('confirmTextBtn').addEventListener('click', () => {
+        const text   = document.getElementById('textInput').value.trim();
+        if (!text) return;
+        const size   = parseInt(fontSizeInput.value);
+        const color  = document.getElementById('textColorInput').value;
+        const family = document.getElementById('fontFamilyInput').value;
+        const { w, h } = SIZES[activePlatform];
+        if (editingIdx >= 0) {
+            Object.assign(layers[editingIdx], { text, size, color, family });
+        } else {
+            layers.push({ type: 'text', text, size, color, family, x: w / 2, y: h / 2 });
+            selectedIdx = layers.length - 1;
+        }
+        updateToolbar();
+        redraw();
+        textOverlay.classList.remove('show');
+    });
+
+    textOverlay.addEventListener('click', e => { if (e.target === textOverlay) textOverlay.classList.remove('show'); });
+
+    // Download (auth-gated — already logged in to reach this page, but double-check)
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+        if (!localStorage.getItem('user')) { window.location.href = 'signup.html'; return; }
+        const prev  = selectedIdx;
+        selectedIdx = -1;
+        redraw(false);
+        selectedIdx = prev;
+        const link    = document.createElement('a');
+        link.download = `ad-${activePlatform}-${Date.now()}.png`;
+        link.href     = canvas.toDataURL('image/png');
+        link.click();
+        // Reset everything after download
+        showScreen1();
+    });
+
+    window.addEventListener('resize', () => {
+        if (document.getElementById('screen2').style.display !== 'none') scaleCanvas();
+    });
+</script>
 </body>
 </html>
