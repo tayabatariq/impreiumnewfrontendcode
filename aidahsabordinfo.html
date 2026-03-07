@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Imperium Media - Home - Bury - Manchester</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="description" content="Helping companies to maximize their potential on new and existing technologies.">
+  <meta name="author" content="ImperiumMediaHoldings">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Favicon -->
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .container-fluid.py-5 {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
+
+    @media (max-width: 768px) {
+      .container-fluid.py-5 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    }
+
+    .theme-card {
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Add more left-right space */
+    .container {
+      max-width: 100% !important;
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+    }
+
+    .row.g-4 {
+      margin-left: -8px !important;
+      margin-right: -8px !important;
+    }
+
+    .col-lg-3 {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+
+    .hero-section {
+      position: relative;
+      background: url('websitesimaee.jpg') center center/cover no-repeat;
+      width: 100%;
+      padding: 100px 20px;
+    }
+
+    .hero-section .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .hero-section .content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 70px 15px;
+      }
+
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .container-fluid {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+    }
+
+    .cont1 {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      padding-top: 10rem !important;
+    }
+
+    /* New styles for equal card heights */
+    .service-item {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      /* padding: 1.5rem !important; */
+    }
+
+    .service-item p {
+      flex-grow: 1;
+      margin-bottom: 1.5rem !important;
+      font-size: 0.875rem;
+      /* Reduced from default 1rem to 0.875rem (14px) */
+      line-height: 1.5;
+      color: #6c757d;
+    }
+
+    .service-item img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      margin-bottom: 1rem !important;
+    }
+
+    /* New styles for side GIFs and layout */
+    .themes-layout-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+      margin-top: 30px;
+      padding: 0 20px;
+    }
+
+    .side-gif {
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-gif img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .themes-content {
+      flex: 1;
+    }
+
+    @media (max-width: 1200px) {
+      .side-gif {
+        flex: 0 0 180px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .themes-layout-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .side-gif {
+        flex: 0 0 auto;
+        margin-bottom: 20px;
+      }
+
+      .side-gif img {
+        max-width: 80%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .themes-layout-container {
+        padding: 0 10px;
+      }
+
+      .service-item {
+        padding: 1.25rem !important;
+      }
+
+      .service-item img {
+        height: 180px;
+      }
+
+      .service-item p {
+        font-size: 0.85rem;
+        /* Slightly smaller on mobile */
+      }
+    }
+
+    /* Adjust card spacing and size */
+    .themes-content .row.g-4 {
+      margin-left: -6px !important;
+      margin-right: -6px !important;
+    }
+
+    .themes-content .col-lg-3 {
+      padding-left: 6px !important;
+      padding-right: 6px !important;
+      margin-bottom: 12px;
+    }
+
+    /* Increase card size */
+    .service-item {
+      min-height: 420px;
+    }
+
+    .service-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem !important;
+    }
+
+    .side-gif .card {
+      max-width: 250px;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+
+    .side-gif .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .side-gif .card-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+
+  <!-- Animation Styles -->
+  <style>
+    .animate-card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-bounce {
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+  </style>
+
+  <!-- Custom Animation -->
+  <style>
+    .card-animate {
+      transition: all 0.4s ease;
+    }
+
+    .card-animate:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(220, 53, 69, 0.15);
+    }
+  </style>
+  <!-- Section 5: Gamification End -->
+  <!-- Animation -->
+  <style>
+    section:hover .d-inline-flex {
+      transform: scale(1.1);
+      transition: 0.4s ease;
+    }
+  </style>
+
+  <!-- Optional Hover Effect -->
+  <style>
+    .border:hover {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+  </style>
+
+<style>
+  /* Base Styles */
+  .ai-section {
+    padding: 40px 0;
+  }
+  
+  .ai-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .ai-image img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+  }
+  
+  .ai-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .tour-popup {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+  }
+  
+  .tour-icon {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .tour-icon i {
+    font-size: 3rem;
+    color: #f54d7c;
+  }
+  
+  .tour-step-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #444;
+  }
+  
+  .tour-popup p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    line-height: 1.8;
+  }
+  
+  .feature-list li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-list li::before {
+    content: "✓";
+    color: #f54d7c;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .action-button {
+    text-align: center;
+  }
+  
+  .btn-try {
+    background: #f54d7c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    max-width: 250px;
+    width: 100%;
+  }
+  
+  .btn-try a {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Desktop Layout - Equal Heights */
+  @media (min-width: 769px) {
+    .ai-layout {
+      display: flex;
+      align-items: stretch;
+      gap: 50px;
+    }
+    
+    .ai-image {
+      flex: 0 0 45%;
+      display: flex;
+    }
+    
+    .ai-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 500px;
+    }
+    
+    .ai-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .tour-popup {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .ai-content h2 {
+      text-align: left;
+    }
+    
+    .tour-step-title {
+      text-align: left;
+    }
+    
+    .tour-popup p {
+      text-align: left;
+    }
+    
+    .btn-try {
+      width: auto;
+      margin: 0 auto;
+    }
+    
+    .tour-icon {
+      text-align: left;
+    }
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 768px) {
+    .ai-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .ai-image {
+      width: 100%;
+    }
+    
+    .ai-image img {
+      height: auto;
+      min-height: auto;
+      object-fit: contain;
+    }
+    
+    .ai-content {
+      width: 100%;
+    }
+    
+    .tour-popup {
+      height: auto;
+    }
+    
+    .ai-section {
+      padding: 20px 0;
+    }
+    
+    .ai-container {
+      padding: 0 15px;
+    }
+    
+    .ai-content h2 {
+      font-size: 1.6rem;
+      text-align: center;
+    }
+    
+    .tour-step-title {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    
+    .tour-popup p {
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    
+    .feature-list li {
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+    
+    .btn-try {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+    
+    .tour-icon {
+      text-align: center;
+    }
+  }
+
+  /* Very Small Screens */
+  @media (max-width: 480px) {
+    .ai-container {
+      padding: 0 10px;
+    }
+    
+    .tour-popup {
+      padding: 20px 15px;
+    }
+    
+    .ai-content h2 {
+      font-size: 1.4rem;
+    }
+    
+    .tour-step-title {
+      font-size: 1.2rem;
+    }
+    
+    .tour-icon i {
+      font-size: 2.5rem;
+    }
+    
+    .feature-list li {
+      font-size: 0.85rem;
+      padding: 6px 0;
+    }
+  }
+</style>
+<style>
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .py-5.mt-5.bg-white {
+      padding: 2rem 0 !important;
+    }
+    
+    .container.mt-5 {
+      margin-top: 2rem !important;
+    }
+    
+    .col-12.col-md-10.col-lg-8 {
+      padding: 0 15px;
+    }
+    
+    h2.fw-bold.text-dark {
+      font-size: 1.6rem !important;
+      text-align: center !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    p.text-muted {
+      font-size: 0.95rem !important;
+      text-align: center !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1.5rem !important;
+      padding: 0 10px;
+    }
+    
+    .list-unstyled {
+      text-align: center;
+    }
+    
+    .list-unstyled li {
+      font-size: 0.9rem !important;
+      padding: 8px 0 !important;
+      justify-content: center !important;
+    }
+    
+    .list-unstyled li i {
+      font-size: 1.1rem !important;
+    }
+  }
+
+  /* Very Small Screens */
+  @media (max-width: 480px) {
+    .py-5.mt-5.bg-white {
+      padding: 1.5rem 0 !important;
+    }
+    
+    .container.mt-5 {
+      margin-top: 1.5rem !important;
+    }
+    
+    h2.fw-bold.text-dark {
+      font-size: 1.4rem !important;
+    }
+    
+    p.text-muted {
+      font-size: 0.9rem !important;
+      padding: 0 5px;
+    }
+    
+    .list-unstyled li {
+      font-size: 0.85rem !important;
+      padding: 6px 0 !important;
+    }
+    
+    .list-unstyled li i {
+      font-size: 1rem !important;
+    }
+  }
+
+  /* Tablet Screens */
+  @media (min-width: 769px) and (max-width: 992px) {
+    .col-12.col-md-10.col-lg-8 {
+      max-width: 90% !important;
+    }
+  }
+
+  /* Desktop Styles - Keep original alignment */
+  @media (min-width: 769px) {
+    h2.fw-bold.text-dark {
+      text-align: left !important;
+    }
+    
+    p.text-muted {
+      text-align: left !important;
+    }
+    
+    .list-unstyled li {
+      justify-content: flex-start !important;
+    }
+  }
+</style>
+<style>
+/* ================= COMPREHENSIVE MOBILE RESPONSIVENESS ================= */
+
+/* Global Mobile Styles */
+@media (max-width: 768px) {
+  /* Fix container padding */
+  .container, .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  /* Page Header */
+  .page-header h1.display-3 {
+    font-size: 2rem !important;
+  }
+  
+  .breadcrumb {
+    font-size: 0.9rem;
+  }
+  
+  /* AI Section - Ensure proper stacking */
+  .ai-layout {
+    flex-direction: column !important;
+    gap: 25px !important;
+  }
+  
+  .ai-image {
+    width: 100% !important;
+    flex: none !important;
+  }
+  
+  .ai-image img {
+    height: auto !important;
+    min-height: auto !important;
+    object-fit: contain !important;
+  }
+  
+  .ai-content {
+    width: 100% !important;
+    flex: none !important;
+  }
+  
+  .ai-content h2 {
+    font-size: 1.6rem !important;
+    text-align: center !important;
+  }
+  
+  .tour-step-title {
+    font-size: 1.3rem !important;
+    text-align: center !important;
+  }
+  
+  .tour-popup p {
+    text-align: center !important;
+    font-size: 0.95rem !important;
+  }
+  
+  .feature-list li {
+    justify-content: center !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .btn-try {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Dashboard Overview Section */
+  .py-5.mt-5.bg-white {
+    padding: 2rem 0 !important;
+  }
+  
+  .container.mt-5 {
+    margin-top: 2rem !important;
+  }
+  
+  .col-12.col-md-10.col-lg-8 {
+    padding: 0 10px !important;
+  }
+  
+  h2.fw-bold.text-dark {
+    font-size: 1.6rem !important;
+    text-align: center !important;
+  }
+  
+  p.text-muted {
+    font-size: 0.95rem !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+  
+  .list-unstyled li {
+    justify-content: center !important;
+    font-size: 0.9rem !important;
+    text-align: center !important;
+  }
+  
+  /* Features Section */
+  .container-xxl.feature.py-5 {
+    padding: 2rem 0 !important;
+  }
+  
+  .display-5 {
+    font-size: 1.8rem !important;
+  }
+  
+  .feature-box {
+    margin-bottom: 15px !important;
+    padding: 20px !important;
+  }
+  
+  .feature-box h4 {
+    font-size: 1.1rem !important;
+  }
+  
+  .feature-box p {
+    font-size: 0.9rem !important;
+  }
+  
+  .d-flex.flex-column.flex-md-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .btn-primary.btn-sm {
+    width: 100% !important;
+    max-width: 250px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* AI Image Generator Section */
+  .py-5.bg-white .container.text-center {
+    padding: 0 15px !important;
+  }
+  
+  .col-lg-8 {
+    padding: 0 10px !important;
+  }
+  
+  .list-unstyled.text-start.d-inline-block {
+    text-align: center !important;
+    display: block !important;
+  }
+  
+  .list-unstyled.text-start.d-inline-block li {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* AI Google Optimization Section */
+  .ai-optimization-section h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .ai-optimization-section p {
+    font-size: 1rem !important;
+    padding: 0 15px !important;
+  }
+  
+  /* Google Profile Optimization */
+  .order-lg-1, .order-lg-2 {
+    order: 2 !important;
+  }
+  
+  .order-lg-2 {
+    order: 1 !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .col-lg-6.text-center {
+    margin-bottom: 25px !important;
+  }
+  
+  /* Domain & SSL Checker */
+  .col-lg-10 {
+    padding: 0 10px !important;
+  }
+  
+  .p-4.rounded-4 {
+    padding: 20px 15px !important;
+  }
+  
+  .row.g-3 .col-md-4 {
+    margin-bottom: 15px !important;
+  }
+  
+  /* Gamification Tools */
+  .col-lg-6 {
+    margin-bottom: 25px !important;
+  }
+  
+  /* Health Insights Tabs */
+  .nav-pills {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  .nav-pills .nav-item {
+    margin-bottom: 8px !important;
+    margin-right: 5px !important;
+  }
+  
+  .nav-pills .nav-link {
+    font-size: 0.9rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  /* Footer adjustments */
+  .col-lg-3, .col-md-6 {
+    margin-bottom: 25px !important;
+    text-align: center !important;
+  }
+  
+  .d-flex.pt-2 {
+    justify-content: center !important;
+  }
+}
+
+/* Very Small Screens (Phones) */
+@media (max-width: 480px) {
+  /* AI Section */
+  .ai-container {
+    padding: 0 10px !important;
+  }
+  
+  .tour-popup {
+    padding: 20px 15px !important;
+  }
+  
+  .ai-content h2 {
+    font-size: 1.4rem !important;
+  }
+  
+  .tour-step-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .tour-icon i {
+    font-size: 2.5rem !important;
+  }
+  
+  .feature-list li {
+    font-size: 0.85rem !important;
+    padding: 6px 0 !important;
+  }
+  
+  /* Dashboard Overview */
+  .py-5.mt-5.bg-white {
+    padding: 1.5rem 0 !important;
+  }
+  
+  .container.mt-5 {
+    margin-top: 1.5rem !important;
+  }
+  
+  h2.fw-bold.text-dark {
+    font-size: 1.4rem !important;
+  }
+  
+  p.text-muted {
+    font-size: 0.9rem !important;
+    padding: 0 5px !important;
+  }
+  
+  .list-unstyled li {
+    font-size: 0.85rem !important;
+    padding: 6px 0 !important;
+  }
+  
+  /* Features */
+  .display-5 {
+    font-size: 1.6rem !important;
+  }
+  
+  .feature-box {
+    padding: 15px !important;
+  }
+  
+  /* Health Insights */
+  .nav-pills .nav-link {
+    font-size: 0.8rem !important;
+    padding: 6px 10px !important;
+  }
+  
+  .btn-lg.px-5 {
+    padding: 12px 25px !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 992px) {
+  .col-12.col-md-10.col-lg-8 {
+    max-width: 95% !important;
+  }
+  
+  .ai-image {
+    flex: 0 0 40% !important;
+  }
+  
+  .ai-content {
+    flex: 1 !important;
+  }
+}
+
+/* Ensure Desktop Layout is Preserved */
+@media (min-width: 769px) {
+  .ai-layout {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 50px !important;
+  }
+  
+  .ai-image {
+    flex: 0 0 45% !important;
+    display: flex !important;
+  }
+  
+  .ai-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    min-height: 500px !important;
+  }
+  
+  .ai-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .tour-popup {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  
+  .ai-content h2 {
+    text-align: left !important;
+  }
+  
+  .tour-step-title {
+    text-align: left !important;
+  }
+  
+  .tour-popup p {
+    text-align: left !important;
+  }
+  
+  .btn-try {
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+  
+  .tour-icon {
+    text-align: left !important;
+  }
+  
+  /* Dashboard Overview Desktop */
+  h2.fw-bold.text-dark {
+    text-align: left !important;
+  }
+  
+  p.text-muted {
+    text-align: left !important;
+  }
+  
+  .list-unstyled li {
+    justify-content: flex-start !important;
+  }
+}
+</style>
+</head>
+
+<body>
+  <!-- Spinner Start -->
+  <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+  </div>
+  <!-- Spinner End -->
+
+  <!-- Navbar Start -->
+  <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+    <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+      <div class="col-lg-6 px-5 text-start">
+        <small><i class="fa fa-map-marker-alt text-primary me-2"></i>Atrium House, 574 Manchester Rd, Bury BL9
+          9SW</small>
+        <small class="ms-4"><i class="fa fa-clock text-primary me-2"></i>9.00 am - 9.00 pm</small>
+      </div>
+      <div class="col-lg-6 px-5 text-end">
+  <small><i class="fa fa-envelope text-primary me-2"></i>info@imperiummedia.co.uk</small>
+                <div id="google_translate_element" class="btn btn-primary"></div>                <div id="google_translate_element" class="btn btn-primary"></div>
+
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+      <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+        <h1 class="display-5 text-primary m-0">I M P E R I U M</h1>
+        <small>M E D I A  -  E N T E R P R I S E S</small>
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse py-3 navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <div class="nav-item dropdown">
+            <a href="service.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">What We Do</a>
+            <div class="dropdown-menu border-light m-0">
+              <a href="websitedesign.html" class="dropdown-item">Website Development </a>
+              <a href="marketingservices.html" class="dropdown-item">Marketing</a>
+              <a href="startuprogramme.html" class="dropdown-item">Start Up Programme</a>
+              <a href="itsupportservice.html" class="dropdown-item">IT Support</a>
+              <a href="multilingualmarketing.html" class="dropdown-item">Multilingual Marketing</a>
+              <a href="googlemybusiness.html" class="dropdown-item">Google My Business </a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Companies</a>
+            <div class="dropdown-menu border-light m-0">
+              <a href="https://www.ahaccountant.co.uk" class="dropdown-item">AH Accountants</a>
+              <a href="aidahsabordinfo.html" class="dropdown-item">AI Dashboard</a>
+
+            </div>
+          </div>
+
+          <div class="nav-item dropdown">
+            <a href="coursepage.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+            <div class="dropdown-menu border-light m-0">
+              <a href="coursepage.html" class="dropdown-item">Shopify Training</a>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+          <div class="nav-item dropdown">
+            <a href="coursepage.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Templates</a>
+            <div class="dropdown-menu border-light m-0">
+              <a href="wordprestheme.html" class="dropdown-item">WordPress Themes</a>
+              <a href="shopifytheme.html" class="dropdown-item">Shopify Themes</a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown ms-2 custom-margin">
+          <button class="btn btn-primary btn-sm px-3 rounded-pill dropdown-toggle" type="button" id="accountDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </button>
+          <ul class="dropdown-menu shadow" aria-labelledby="accountDropdown">
+            <li><a class="dropdown-item" href="login.html">Login</a></li>
+            <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Navbar End -->
+
+  <!-- Page Header Start -->
+  <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+      <h1 class="display-3 mb-4 animated slideInDown">AI Dashboard</h1>
+      <nav aria-label="breadcrumb animated slideInDown">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Pages</a></li>
+          <li class="breadcrumb-item active" aria-current="page">AI Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+
+  
+<section class="ai-section" style="padding: 40px 0;">
+  <div class="ai-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div class="ai-layout">
+      
+      <!-- Image Section -->
+      <div class="ai-image">
+        <img src="aiimageinfo.jpg" alt="AI Tool Image">
+      </div>
+
+      <!-- Content Section -->
+      <div class="ai-content">
+        <h2>Why Choose Our AI Tool?</h2>
+        
+        <div class="tour-popup">
+          <div class="tour-content">
+            <div class="tour-icon">
+              <i class="bi bi-lightbulb-fill"></i>
+            </div>
+
+            <h3 class="tour-step-title">Revolutionize Your Workflow</h3>
+            
+            <p>
+              Experience the next generation of productivity with our advanced AI tool.
+              Designed to automate repetitive tasks, analyze data intelligently, and deliver insights
+              that help your business grow faster and smarter.
+            </p>
+
+            <ul class="feature-list">
+              <li>Automated process optimization</li>
+              <li>Real-time analytics and smart reporting</li>
+              <li>Human-like interaction with users</li>
+              <li>Secure and scalable infrastructure</li>
+              <li>24/7 cloud-based accessibility</li>
+            </ul>
+
+            <div class="action-button">
+              <button class="btn-try">
+                <a href="aitooldashboard.html">Try Our AI Tool</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<!-- Section Start -->
+<section class="py-5 mt-5 bg-white">
+  <div class="container mt-5">
+    <div class="row align-items-center g-4 justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <h2 class="fw-bold text-dark mb-3 text-center text-md-start">Dashboard Overview</h2>
+        <p class="text-muted mb-4 text-center text-md-start">
+          Get a real-time overview of your business performance. Monitor growth, track activity,
+          and manage everything from one simple, clean interface.
+        </p>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
+            <i class="bi bi-check-circle-fill me-2 flex-shrink-0" style="color: #ea0953;"></i> 
+            <span>Real-time performance tracking</span>
+          </li>
+          <li class="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
+            <i class="bi bi-check-circle-fill me-2 flex-shrink-0" style="color: #ea0953;"></i> 
+            <span>Customizable widgets & reports</span>
+          </li>
+          <li class="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
+            <i class="bi bi-check-circle-fill me-2 flex-shrink-0" style="color: #ea0953;"></i> 
+            <span>Alerts & notifications center</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section End -->
+
+   
+
+  
+<!-- Features Start -->
+<div class="container-xxl feature py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <!-- Left Content -->
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Smart Tools for Modern Businesses</p>
+        <h1 class="display-5 mb-4">Boost Your Store with AI, Notifications & Engagement!</h1>
+        <p class="mb-4">
+          We provide advanced tools that enhance your e-commerce store performance and customer engagement. 
+          From real-time Shopify analysis to instant WhatsApp alerts and powerful gamification features — 
+          everything your brand needs to stand out.
+        </p>
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+          <a class="btn btn-primary btn-sm py-2 px-4" href="service.html">Explore Features</a>
+          <a class="btn btn-primary btn-sm py-2 px-4" href="https://wa.me/923001234567">Chat on WhatsApp</a>
+          <a class="btn btn-primary btn-sm py-2 px-4" href="contact.html">Request a Demo</a>
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-lg-6">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-6">
+            <div class="row g-4">
+              <!-- Shopify Checker -->
+              <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                <div class="feature-box border rounded p-4">
+                  <i class="fa fa-shopping-cart fa-3x text-primary mb-3"></i>
+                  <h4 class="mb-3">Shopify Health Checker</h4>
+                  <p class="mb-3">
+                    Instantly analyze your Shopify store’s performance, load time, and product visibility. 
+                    Get detailed reports with actionable suggestions to improve your conversions and user experience.
+                  </p>
+                </div>
+              </div>
+
+              <!-- WhatsApp Notifications -->
+              <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                <div class="feature-box border rounded p-4">
+                  <i class="fa fa-whatsapp fa-3x text-success mb-3"></i>
+                  <h4 class="mb-3">WhatsApp Notifications</h4>
+                  <p class="mb-3">
+                    Keep your customers updated with instant WhatsApp alerts about their orders, deliveries, 
+                    and offers. Fast, direct, and engaging — because every second counts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gamification -->
+          <div class="col-md-6 wow fadeIn" data-wow-delay="0.7s">
+            <div class="feature-box border rounded p-4">
+              <i class="fa fa-gamepad fa-3x text-warning mb-3"></i>
+              <h4 class="mb-3">Gamification & Rewards</h4>
+              <p class="mb-3">
+                Turn your user experience into fun! Reward customer actions with points, badges, and levels. 
+                Encourage repeat visits and stronger loyalty through playful engagement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Features End -->
+
+  <!-- Section 3 Start -->
+  <section class="py-5 bg-white">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+
+
+          <!-- Heading -->
+          <h2 class="fw-bold text-dark mb-3">AI Image Generator</h2>
+
+          <!-- Description -->
+          <p class="text-muted mb-4">
+            Bring your imagination to life with our AI-powered image generator.
+            Simply type what you want to see — and get stunning images created in seconds.
+            Perfect for creatives, businesses, and marketing teams.
+          </p>
+
+          <!-- List -->
+          <ul class="list-unstyled text-start d-inline-block">
+            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> Generate images from simple text prompts</li>
+            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> High-resolution & realistic results</li>
+            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> Instant preview & download</li>
+          </ul>
+
+          <!-- Future Feature Button -->
+          <div class="mt-4">
+            <button style="background-color: #ea0953; color: white;" class="btn r px-4 py-2 rounded-pill">
+              Try Image Generator
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section 3 End -->
+
+
+<!-- ================= AI Google Optimization Section ================= -->
+<section class="ai-optimization-section position-relative text-white text-center py-5">
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-md-10 col-lg-8 px-3 px-md-5">
+        <h2 class="mb-4 fw-bold text-uppercase" style="color:#fff;">AI-Powered Google Optimization</h2>
+        <p class="mb-4 fs-5 px-2 px-md-0">
+          Boost your online visibility with our AI-driven Google optimization engine.
+          It automatically analyzes your website performance, identifies ranking opportunities,
+          and helps you achieve higher SEO scores effortlessly.
+        </p>
+       
+        <a href="dashboard.html" class="btn btn-lg mt-4 try-btn px-4 py-2">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Section 4 Start -->
+ <!-- ================= GOOGLE PROFILE OPTIMIZATION (Modern UI) ================= -->
+<section class="py-5" style="background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Left Image -->
+      <div class="col-lg-6 text-center order-lg-1 order-1">
+        <img src="aiimageeinfo2.jpg" alt="Google Optimization" class="img-fluid rounded-4 shadow-lg animate-float" style="max-height: 380px; object-fit: cover;">
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-lg-6 order-lg-2 order-2">
+        <div class="p-4 rounded-4 bg-white shadow-lg border-0 hover-glow">
+          <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3 mb-3">AI Optimization</p>
+          <h2 class="fw-bold text-dark mb-3">Google Profile Optimization</h2>
+          <p class="text-muted mb-4">
+            Elevate your business visibility and attract more clients with our AI-powered Google optimization. 
+            From keywords to images, everything gets enhanced for the best search performance.
+          </p>
+
+          <div class="mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-graph-up-arrow text-danger fs-5 me-2"></i>
+              <span class="text-dark">Boost your local SEO rankings</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-stars text-danger fs-5 me-2"></i>
+              <span class="text-dark">AI-based content recommendations</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-image-fill text-danger fs-5 me-2"></i>
+              <span class="text-dark">Auto-optimize visuals and branding</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-lightning-charge-fill text-danger fs-5 me-2"></i>
+              <span class="text-dark">Instant improvement suggestions</span>
+            </div>
+          </div>
+
+          <button class="btn px-4 py-2 rounded-pill text-white fw-semibold" style="background-color: #ea0953;">
+            Optimize My Profile
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Section 4 End -->
+
+  <!-- Section 5 Start: Domain & SSL Checker (UI only, no JS/backend) -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+          <div class="p-4 rounded-4 shadow-sm border-top border-4" style="border-color: #ea0953;">
+            <!-- Header -->
+            <div class="d-flex align-items-center mb-3">
+              <div class="me-3">
+                <div class="icon-box d-inline-flex align-items-center justify-content-center rounded-circle"
+                  style="width:64px;height:64px;background-color:rgba(234, 9, 83, 0.1);color:#ea0953;">
+                  <i class="bi bi-globe2 fs-3"></i>
+                </div>
+              </div>
+              <div>
+                <h3 class="mb-0 fw-bold" style="color:#ea0953;">Domain & SSL Checker</h3>
+                <p class="text-muted mb-0">Quickly inspect a website's domain health, DNS, and SSL certificate
+                  information. (UI prototype only)</p>
+              </div>
+            </div>
+
+            <!-- Input / Example display (no JS) -->
+            <form class="row g-2 align-items-center mb-4">
+              <div class="col-md-8">
+                <label class="form-label small text-muted">Enter Domain or URL</label>
+                <input type="text" class="form-control form-control-lg"
+                  placeholder="e.g. example.com or https://example.com" value="example.com" disabled>
+                <div class="form-text">(This is a UI mock — actual checking requires backend/API)</div>
+              </div>
+
+              <div class="col-md-4 text-md-end">
+                <label class="form-label small text-muted d-block">&nbsp;</label>
+                <button type="button" class="btn btn-lg rounded-pill" style="background-color:#ea0953;color:white;"
+                  disabled>Run Check</button>
+                <div class="form-text small text-muted mt-1">Button disabled in prototype</div>
+              </div>
+            </form>
+
+            <!-- Result Cards -->
+            <div class="row g-3">
+
+              <!-- Domain Status -->
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <div class="d-flex align-items-start">
+                    <div class="me-3">
+                      <div class="rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width:50px;height:50px;background-color:rgba(234, 9, 83, 0.1);color:#ea0953;">
+                        <i class="bi bi-check2-circle fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="mb-1 fw-bold" style="color:#ea0953;">Domain Status</h5>
+                      <p class="mb-1 text-muted small">Registered & Active</p>
+                      <div class="badge bg-success text-white">Active</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DNS Records -->
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <div class="d-flex align-items-start">
+                    <div class="me-3">
+                      <div class="rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width:50px;height:50px;background-color:rgba(234, 9, 83, 0.1);color:#ea0953;">
+                        <i class="bi bi-server fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="mb-1 fw-bold" style="color:#ea0953;">DNS</h5>
+                      <p class="mb-1 text-muted small">A, CNAME, MX detected</p>
+                      <ul class="small mb-0" style="line-height:1.2;">
+                        <li><strong>A:</strong> 93.184.216.34</li>
+                        <li><strong>MX:</strong> mail.example.com</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SSL Certificate -->
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <div class="d-flex align-items-start">
+                    <div class="me-3">
+                      <div class="rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width:50px;height:50px;background-color:rgba(234, 9, 83, 0.1);color:#ea0953;">
+                        <i class="bi bi-shield-lock-fill fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 class="mb-1 fw-bold" style="color:#ea0953;">SSL Certificate</h5>
+                      <p class="mb-1 text-muted small">Valid — Expires in 45 days</p>
+                      <div class="small">
+                        <div><strong>Issuer:</strong> Let's Encrypt</div>
+                        <div><strong>Valid From:</strong> 2025-09-28</div>
+                        <div><strong>Expires:</strong> 2026-11-12</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Extended details row -->
+              <div class="col-12">
+                <div class="p-3 bg-white rounded-3 border shadow-sm">
+                  <h6 class="fw-bold mb-2" style="color:#ea0953;">Detailed Report (Sample)</h6>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="mb-1 small text-muted">HTTP Status</p>
+                      <div class="fw-semibold">200 OK</div>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="mb-1 small text-muted">Redirects</p>
+                      <div class="fw-semibold">No redirects</div>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="mb-1 small text-muted">HSTS</p>
+                      <div class="fw-semibold text-success">Enabled</div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <p class="mb-0 small text-muted">
+                    <strong>Note:</strong> This is a visual prototype of the Domain & SSL checker. To make it functional
+                    you will need a backend endpoint or third-party API to query DNS records, perform HTTP/HTTPS
+                    requests and fetch SSL certificate metadata. If you want, I can provide a simple API plan or example
+                    backend code next.
+                  </p>
+                </div>
+              </div>
+
+            </div> <!-- row -->
+          </div> <!-- card -->
+        </div> <!-- col -->
+      </div>
+    </div>
+  </section>
+  <!-- Section 5 End -->
+
+
+<!-- ================= SECTION 1: GAMIFICATION & TASK MANAGER ================= -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Engage & Organize</p>
+      <h2 class="fw-bold mb-3 text-dark">Gamification Tools & Smart Task Management</h2>
+      <p class="text-muted mb-0">
+        Empower your platform with interactive gamification features and seamless task management — designed to keep your team motivated and productive.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <!-- Gamification Column -->
+      <div class="col-lg-6">
+        <div class="h-100 bg-white shadow-sm rounded-4 p-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:60px;height:60px;background-color:rgba(234,9,83,0.1);color:#ea0953;">
+              <i class="bi bi-trophy fs-3"></i>
+            </div>
+            <h4 class="fw-bold mb-0" style="color:#ea0953;">Gamification Tools</h4>
+          </div>
+          <p class="text-muted">
+            Make your platform fun and rewarding! Add challenges, achievements, and points to increase user engagement.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="border rounded-4 p-3 h-100">
+                <h6 class="fw-bold">Badges & Levels</h6>
+                <p class="small text-muted mb-0">Motivate users by unlocking badges and levels as they progress.</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="border rounded-4 p-3 h-100">
+                <h6 class="fw-bold">Progress Tracking</h6>
+                <p class="small text-muted mb-0">Show progress bars and reward milestones to keep users active.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="#" class="btn btn-sm px-4 py-2 rounded-pill text-white" style="background-color:#ea0953;">Explore Gamification</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Manager Column -->
+      <div class="col-lg-6">
+        <div class="h-100 bg-white shadow-sm rounded-4 p-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:60px;height:60px;background-color:rgba(234,9,83,0.1);color:#ea0953;">
+              <i class="bi bi-list-check fs-3"></i>
+            </div>
+            <h4 class="fw-bold mb-0" style="color:#ea0953;">Task Manager</h4>
+          </div>
+          <p class="text-muted">
+            Manage your work efficiently with our intuitive dashboard. Assign, organize, and track your daily tasks effortlessly.
+          </p>
+
+          <ul class="list-unstyled text-start small text-muted">
+            <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i>Assign & track progress in real-time</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i>Team-based collaboration tools</li>
+            <li><i class="bi bi-check-circle text-primary me-2"></i>Smart reminders and notifications</li>
+          </ul>
+
+          <div class="mt-4 text-center">
+            <a href="#" class="btn btn-sm px-4 py-2 rounded-pill text-white" style="background-color:#ea0953;">Explore Task Manager</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <h4 class="text-white mb-4">Our Office</h4>
+          <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Atrium House, 574 Manchester Rd, Bury BL9 9SW</p>
+          <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@imperiummedia.co.uk</p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-square btn-outline-light rounded-circle me-2"
+              href="https://www.facebook.com/ImperiumMedia.A/"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-square btn-outline-light rounded-circle me-2"
+              href="https://uk.linkedin.com/company/imperiummedia"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="text-white mb-4">Site Map</h4>
+          <a class="btn btn-link" href="about.html">About Us</a>
+          <a class="btn btn-link" href="contact.html">Contact Us</a>
+          <a class="btn btn-link" href="service.html">Our Services</a>
+          <a class="btn btn-link" href="jobs.html"> Submit Your CV</a>
+          <a class="btn btn-link" href="termsandconditions.html">Terms and Conditions</a>
+          <div class="btn btn-link dropdown">
+            <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown">Companies</a>
+            <div class="dropdown-menu border-light m-0">
+              <a href="https://www.ahaccountant.co.uk" class="dropdown-item">AH Accountants</a>
+              <a href="https://www.tiktok.com/@interactivebyimperium" class="dropdown-item">Interactive By Imperium</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="text-white mb-4">Customer Support</h4>
+          <a class="btn btn-link" href="tel:07718927613">Support Line</a>
+          <a class="btn btn-link" href="https://linktr.ee/imperiummedia"> Linktree</a>
+          <a class="btn btn-link" href="https://www.interactive.imperiummedia.org.uk/">Imperium Interactive</a>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <img class="img-fluid rounded mb-3" src="img/googlepartner.png" alt="Google Partner">
+                               <img class="img-fluid rounded" src="trsut1.png" alt="" style="width: 100%; max-width: 400px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          &copy; <a class="border-bottom" href="#">Imperium Media Enterprises </a>, All Right Reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- JS to Toggle Extra Cards -->
+  <script>
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+    const extraCards = document.getElementById('extraCards');
+
+    learnMoreBtn.addEventListener('click', () => {
+      extraCards.classList.toggle('d-none');
+      learnMoreBtn.textContent = extraCards.classList.contains('d-none') ? 'Learn More' : 'Show Less';
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Select all download buttons
+      const downloadButtons = document.querySelectorAll(".download-btn");
+
+      downloadButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent direct download
+
+          const fileUrl = this.getAttribute("data-file");
+
+          Swal.fire({
+            title: "Would you like to support a cause?",
+            html: `
+                                <p style="font-size: 15px;">It means you can give users a choice to support a charity like RSPCA or Mind when they download your WordPress theme.</p>
+                                <p style="font-size: 14px;">You're not donating money  just showing support or awareness for a good cause </p>
+                            `,
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Support RSPCA ",
+            denyButtonText: "Support Mind ",
+            cancelButtonText: "No thanks",
+            showDenyButton: true,
+            reverseButtons: true,
+            width: "600px"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire("Thank you!", "You supported RSPCA ", "success")
+                .then(() => {
+                  window.location.href = fileUrl;
+                });
+            } else if (result.isDenied) {
+              Swal.fire("Thank you!", "You supported Mind ", "success")
+                .then(() => {
+                  window.location.href = fileUrl;
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal.fire("Download canceled", "You chose not to download the theme.", "info");
+            }
+          });
+        });
+      });
+    });
+  </script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+  <!-- Brevo Conversations {literal} -->
+  <script>
+    (function (d, w, c) {
+      w.BrevoConversationsID = '657ce0425a56fa4fb66772dd';
+      w[c] = w[c] || function () {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      var s = d.createElement('script');
+      s.async = true;
+      s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'BrevoConversations');
+  </script>
+  <!-- /Brevo Conversations {/literal} -->
+</body>
+
+</html>
