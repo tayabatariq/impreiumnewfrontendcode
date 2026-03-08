@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensory | Imperium Media - Private Access</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d1130;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 20% 50%, rgba(63, 94, 251, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 20%, rgba(252, 70, 107, 0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 80%, rgba(63, 94, 251, 0.1) 0%, transparent 50%);
+      animation: bgShift 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes bgShift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(2%, 3%); }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: rgba(99, 130, 255, 0.4);
+      border-radius: 50%;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+    }
+
+    .login-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+    }
+
+    /* Logo Section */
+    .logo-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-section img {
+      width: 140px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .logo-section .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .logo-section .logo-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .badge-private {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(63, 94, 251, 0.15);
+      border: 1px solid rgba(63, 94, 251, 0.3);
+      color: #8fa3ff;
+      font-size: 10px;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* Card */
+    .login-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 36px 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .login-card h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .login-card p.subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.25);
+      font-size: 14px;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      padding: 13px 14px 13px 40px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    .input-wrap input:focus {
+      border-color: rgba(99, 130, 255, 0.6);
+      background: rgba(99, 130, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(99, 130, 255, 0.1);
+    }
+
+    .input-wrap input::placeholder { color: rgba(255,255,255,0.2); }
+
+    .toggle-pass {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.25);
+      cursor: pointer;
+      font-size: 14px;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .toggle-pass:hover { color: rgba(255,255,255,0.6); }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #3f5efb 0%, #5a7bff 100%);
+      border: none;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-login:hover {
+      background: linear-gradient(135deg, #5a7bff 0%, #7a9bff 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(63, 94, 251, 0.4);
+    }
+
+    .btn-login:active { transform: translateY(0); }
+
+    .btn-login.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .btn-login .spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-msg {
+      display: none;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .security-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 22px 0;
+    }
+
+    .sensory-brand {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .sensory-brand span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .sensory-brand .s-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #3f5efb;
+      border-radius: 50%;
+      margin: 0 6px;
+      vertical-align: middle;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+  </style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vsj051v3ns");
+</script>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSB3C6HCG2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BSB3C6HCG2');
+</script>
+</head>
+<body>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="login-wrapper">
+    <!-- Logo -->
+    <div class="logo-section">
+      <div class="logo-text">I M P E R I U M</div>
+      <div class="logo-sub">M E D I A &nbsp; E N T E R P R I S E S</div>
+      <div class="badge-private">
+        <i class="fas fa-lock" style="font-size:8px;"></i>
+        SENSORY &nbsp;&bull;&nbsp; PRIVATE ACCESS
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="login-card">
+      <h2>Welcome back</h2>
+      <p class="subtitle">Sign in to access your analytics dashboard</p>
+
+      <form id="sensoryLoginForm" autocomplete="off">
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="emailInput" placeholder="your@imperiummedia.co.uk" required autocomplete="off">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-key"></i>
+            <input type="password" id="passwordInput" placeholder="Enter your password" required autocomplete="new-password">
+            <button type="button" class="toggle-pass" id="togglePass">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login" id="loginBtn">
+          <span id="btnText">Access Dashboard</span>
+          <div class="spinner" id="btnSpinner"></div>
+        </button>
+
+        <div class="error-msg" id="errorMsg">
+          <i class="fas fa-shield-alt me-2"></i>
+          Access denied. Invalid credentials.
+        </div>
+      </form>
+
+      <div class="divider"></div>
+
+      <div class="security-note">
+        <i class="fas fa-shield-alt"></i>
+        This portal is restricted to authorised personnel only
+      </div>
+    </div>
+
+    <div class="sensory-brand">
+      <span>SENSORY</span>
+      <span class="s-dot"></span>
+      <span>ANALYTICS</span>
+    </div>
+  </div>
+
+  <script>
+    // Particles
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+      p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      container.appendChild(p);
+    }
+
+    // Toggle password
+    document.getElementById('togglePass').addEventListener('click', function () {
+      const input = document.getElementById('passwordInput');
+      const icon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fas fa-eye';
+      }
+    });
+
+    const BACKEND = (window.location.protocol === 'file:' || window.location.hostname === 'localhost')
+      ? 'http://localhost:5000'
+      : 'https://impremiumbackend.vercel.app';
+
+    // Login
+    document.getElementById('sensoryLoginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('emailInput').value.trim().toLowerCase();
+      const password = document.getElementById('passwordInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const btn = document.getElementById('loginBtn');
+      const btnText = document.getElementById('btnText');
+      const spinner = document.getElementById('btnSpinner');
+
+      // Show loading
+      btn.classList.add('loading');
+      btnText.style.display = 'none';
+      spinner.style.display = 'block';
+      errorMsg.style.display = 'none';
+
+      fetch(BACKEND + '/api/sensory-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      .then(res => res.json())
+      .then(function (data) {
+        if (data.success) {
+          sessionStorage.setItem('sensory_auth', btoa(email + ':' + Date.now()));
+          sessionStorage.setItem('sensory_user', email);
+          window.location.href = 'sensory-dashboard.html';
+        } else {
+          btn.classList.remove('loading');
+          btnText.style.display = 'block';
+          spinner.style.display = 'none';
+          errorMsg.style.display = 'block';
+
+          const card = document.querySelector('.login-card');
+          card.style.animation = 'none';
+          card.style.transform = 'translateX(-6px)';
+          setTimeout(() => {
+            card.style.transition = 'transform 0.4s cubic-bezier(.36,.07,.19,.97)';
+            card.style.transform = 'translateX(0)';
+          }, 50);
+        }
+      })
+      .catch(function() {
+        btn.classList.remove('loading');
+        btnText.style.display = 'block';
+        spinner.style.display = 'none';
+        errorMsg.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
