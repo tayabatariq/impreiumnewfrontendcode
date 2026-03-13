@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensory Cloud OS</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="Operatinsystm.css">
+</head>
+
+<body id="os-body">
+
+    <div class="aurora-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="top-nav">
+        <button id="dashboardBtn" class="dashboard-back-btn">
+            <i class="ri-dashboard-3-line"></i>
+            <span>Sensory Dashboard</span>
+        </button>
+
+        <div class="search-container">
+            <i class="ri-search-line"></i>
+            <input type="text" id="desktopSearch" placeholder="Search apps or files...">
+        </div>
+    </div>
+
+    <main class="desktop-canvas" id="iconGrid">
+        <div class="desktop" id="desktopBG">
+            <div class="icon-row">
+               <div class="icon" onclick="openWindow('fileManagerWindow')">
+    <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="Files">
+    <span>File Manager</span>
+</div>
+                <div class="icon" onclick="openChrome()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" alt="Chrome">
+                    <span>Chrome</span>
+                </div>
+                <div id="chromeWindow" class="window-container">
+                    <div class="window-header">
+                        <span>Google Chrome</span>
+                        <button onclick="closeChrome()">X</button>
+                    </div>
+                    <div class="window-body">
+                        <iframe src="https://www.google.com/search?igu=1" id="chromeFrame"></iframe>
+                    </div>
+                </div>
+
+                <div class="icon" onclick="openWindow('win-recycle')">
+                    <img src="recycle.png" alt="Recycle Bin">
+                    <span>Recycle Bin</span>
+                </div>
+
+                <div class="icon" onclick="openWindow('win-calendar')">
+                    <img src="calender.png" alt="Calendar">
+                    <span>Calendar</span>
+                </div>
+
+                <div class="icon" onclick="openWindow('win-notes')">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAPWezZXRWxI05NMGgML05bpBTh-Yd7m7YFQ&s" alt="Notes">
+                    <span>Notes</span>
+                </div>
+
+                <div class="icon" onclick="openWindow('win-settings')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" alt="Settings">
+                    <span>Settings</span>
+                </div>
+            </div>
+
+            <div id="win-notes" class="window">
+                <div class="win-header"><span>Notes Manager</span><button onclick="closeWindow('win-notes')">X</button>
+                </div>
+                <div class="win-body">
+                    <textarea id="noteInput" placeholder="Type your notes here..."></textarea>
+                    <button class="save-note-btn" onclick="saveNote()">Save Note</button>
+                    <div id="notesList"></div>
+                </div>
+            </div>
+
+            <div class="calendar-overlay" id="win-calendar" style="display:none;">
+    <div class="calendar-window">
+        <div class="fm-header">
+            <div class="header-left">
+                <i class="fa-solid fa-calendar-days" style="color: var(--accent);"></i>
+                <span>Calendar</span>
+            </div>
+            <div class="header-controls">
+                <button class="control-btn close" onclick="closeCalendar()">×</button>
+            </div>
+        </div>
+        
+        <div class="calendar-content">
+            <div class="calendar-header">
+                <h2 id="monthYear">March 2026</h2>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-name">Sun</div><div class="day-name">Mon</div>
+                <div class="day-name">Tue</div><div class="day-name">Wed</div>
+                <div class="day-name">Thu</div><div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+            </div>
+            <div id="calendarDays" class="calendar-grid days">
+                </div>
+        </div>
+    </div>
+</div>
+
+            <div id="win-settings" class="window">
+                <div class="win-header"><span>Settings</span><button onclick="closeWindow('win-settings')">X</button>
+                </div>
+                <div class="win-body">
+                    <p>Change Wallpaper Color:</p>
+                    <input type="color" id="bgColorPicker" onchange="changeBg(this.value)">
+                    <button class="save-note-btn" onclick="resetDesktop()">Reset Desktop</button>
+                </div>
+            </div>
+
+            <div id="win-recycle" class="window">
+                <div class="win-header"><span>Recycle Bin</span><button onclick="closeWindow('win-recycle')">X</button>
+                </div>
+                <div class="win-body">Bin is empty.</div>
+            </div>
+
+        </div>
+    </main>
+
+  <div class="dock-container">
+    <div class="dock-icon" title="File Manager" onclick="openWindow('fileManagerWindow')" id="dock-file">
+        <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="Files">
+        <div class="indicator"></div>
+    </div>
+
+    <div class="dock-icon" title="Chrome" onclick="openChrome()" id="dock-chrome">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888846.png" alt="Chrome">
+        <div class="indicator"></div>
+    </div>
+
+    <div class="dock-icon" title="Calendar" onclick="openWindow('win-calendar')" id="dock-calendar">
+        <img src="calender.png" alt="Calendar">
+        <div class="indicator"></div>
+    </div>
+
+    <div class="dock-icon" title="Notes" onclick="openWindow('win-notes')" id="dock-notes">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAPWezZXRWxI05NMGgML05bpBTh-Yd7m7YFQ&s" alt="Notes">
+        <div class="indicator"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div id="settingsBtn" class="dock-icon" title="Settings" onclick="openWindow('win-settings')">
+        <img src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" alt="Settings">
+    </div>
+</div>
+<div class="fm-overlay" id="file-overlay" style="display:none;">
+    <div class="file-manager" id="fileManagerWindow">
+        <div class="fm-header">
+            <div class="header-left">
+                <i class="fa-solid fa-folder-open" style="color: var(--accent);"></i>
+                <span>File Explorer</span>
+            </div>
+            <div class="header-controls">
+                <button class="control-btn minimize" onclick="minimizeFileManager()" title="Minimize">─</button>
+                <button class="control-btn close" onclick="closeFileManager()" title="Close">×</button>
+            </div>
+        </div>
+
+        <div class="fm-body">
+            <div class="fm-sidebar">
+                <div class="sidebar-item active" onclick="switchSection('quickAccess', this)"><i class="fa-solid fa-house"></i> Quick Access</div>
+                <div class="sidebar-item" onclick="switchSection('documents', this)"><i class="fa-solid fa-file-lines"></i> Documents</div>
+                <div class="sidebar-item" onclick="switchSection('pictures', this)"><i class="fa-solid fa-image"></i> Pictures</div>
+                <div class="sidebar-item" onclick="switchSection('downloads', this)"><i class="fa-solid fa-download"></i> Downloads</div>
+            </div>
+
+            <div class="fm-main">
+
+                <!-- Master Toolbar — section buttons + action buttons in one row -->
+                <div class="fm-toolbar" id="masterToolbar">
+                    <!-- Quick Access only -->
+                    <button class="new-folder-btn" id="btnNewFolder" onclick="openModal('folder')"><i class="fa-solid fa-folder-plus"></i> New Folder</button>
+                    <button class="new-folder-btn" id="btnNewFile" onclick="openModal('file')"><i class="fa-solid fa-file-circle-plus"></i> New File</button>
+                    <!-- Documents only -->
+                    <button class="new-folder-btn" id="btnUploadDoc" onclick="document.getElementById('docUpload').click()" style="display:none;"><i class="fa-solid fa-upload"></i> Upload Document</button>
+                    <input type="file" id="docUpload" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx" style="display:none;" onchange="handleDocUpload(event)">
+                    <!-- Pictures only -->
+                    <button class="new-folder-btn" id="btnUploadPic" onclick="document.getElementById('picUpload').click()" style="display:none;"><i class="fa-solid fa-image"></i> Upload Picture</button>
+                    <input type="file" id="picUpload" accept="image/*" multiple style="display:none;" onchange="handlePicUpload(event)">
+                    <!-- Divider — only visible when item selected -->
+                    <span id="toolbarDivider" style="display:none;width:1px;height:20px;background:rgba(255,255,255,0.1);margin:0 4px;"></span>
+                    <!-- Action buttons — shown when any item selected -->
+                    <button class="new-folder-btn" id="editBtn" onclick="openFile(null)" style="display:none;"><i class="fa-solid fa-pencil"></i> Edit</button>
+                    <button class="new-folder-btn" id="downloadBtn" onclick="downloadSelected()" style="display:none;"><i class="fa-solid fa-download"></i> Download</button>
+                    <button class="new-folder-btn" id="renameBtn" onclick="renameSelected()" style="display:none;"><i class="fa-solid fa-pen"></i> Rename</button>
+                    <button class="new-folder-btn danger-btn" id="deleteBtn" onclick="deleteSelected()" style="display:none;"><i class="fa-solid fa-trash"></i> Delete</button>
+                </div>
+
+                <!-- Quick Access Grid -->
+                <div id="section-quickAccess" class="folder-grid" onclick="deselectAll(event)"></div>
+
+                <!-- Documents Grid -->
+                <div id="section-documents" class="folder-grid" style="display:none;" onclick="deselectAll(event)"></div>
+
+                <!-- Pictures Grid -->
+                <div id="section-pictures" class="folder-grid" style="display:none;" onclick="deselectAll(event)"></div>
+
+                <!-- Downloads Grid -->
+                <div id="section-downloads" class="folder-grid" style="display:none;" onclick="deselectAll(event)"></div>
+
+                <div class="fm-status" id="fm-status">Ready</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Context Menu -->
+<div id="contextMenu" style="display:none;position:fixed;background:#1e2548;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:4px 0;z-index:9999;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+    <div class="ctx-item" id="ctxEditBtn" onclick="openFile(null)" style="display:none;"><i class="fa-solid fa-pencil"></i> Edit</div>
+    <div class="ctx-item" onclick="downloadSelected()"><i class="fa-solid fa-download"></i> Download</div>
+    <div class="ctx-item" onclick="renameSelected()"><i class="fa-solid fa-pen"></i> Rename</div>
+    <div class="ctx-item ctx-danger" onclick="deleteSelected()"><i class="fa-solid fa-trash"></i> Delete</div>
+</div>
+
+<!-- Modal -->
+<div id="customModal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+        <h3 id="modalTitle">Create New Folder</h3>
+        <input type="text" id="folderInput" placeholder="Enter name..." autofocus>
+        <textarea id="fileContentInput" placeholder="File content (optional)..." style="display:none;width:100%;height:100px;margin-top:10px;background:#0f1729;border:1px solid rgba(255,255,255,0.1);color:white;padding:8px;border-radius:8px;font-size:12px;resize:vertical;"></textarea>
+        <div class="modal-buttons">
+            <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+            <button class="modal-btn create" id="modalConfirmBtn" onclick="confirmCreation()">Create</button>
+        </div>
+    </div>
+</div>
+
+<!-- Image Preview -->
+<div id="imgPreview" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+    <img id="previewImg" style="max-width:80vw;max-height:75vh;border-radius:8px;">
+    <button onclick="document.getElementById('imgPreview').style.display='none'" style="background:#4c6fff;border:none;color:white;padding:8px 20px;border-radius:8px;cursor:pointer;">Close</button>
+</div>
+
+<!-- File Viewer / Editor -->
+<div id="fileEditorOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center;">
+    <div style="background:#1e2548;border-radius:12px;width:80vw;max-width:860px;height:80vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+        <!-- Title Bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#151c3a;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="color:#a0aec0;font-size:12px;display:flex;align-items:center;gap:10px;">
+                <span><i class="fa-solid fa-file-code" style="margin-right:6px;color:#5b8cff;"></i><span id="fileEditorTitle">file.txt</span></span>
+                <span id="fileEditorSaveStatus" style="font-size:11px;padding:2px 8px;border-radius:4px;display:none;"></span>
+            </span>
+            <div style="display:flex;gap:8px;">
+                <button onclick="saveFileEdit()" style="background:#4c6fff;border:none;color:white;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px;"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                <button onclick="document.getElementById('fileEditorOverlay').style.display='none'" style="background:#2d3561;border:none;color:#a0aec0;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px;">✕ Close</button>
+            </div>
+        </div>
+        <!-- Editor Area -->
+        <textarea id="fileEditorContent" spellcheck="false" style="flex:1;background:#0f1729;color:#e2e8f0;border:none;outline:none;padding:16px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;resize:none;tab-size:2;"></textarea>
+        <!-- Status Bar -->
+        <div style="padding:4px 16px;background:#151c3a;border-top:1px solid rgba(255,255,255,0.06);font-size:11px;color:#4a5568;display:flex;gap:16px;">
+            <span id="fileEditorLang">Plain Text</span>
+            <span>UTF-8</span>
+        </div>
+    </div>
+</div>
+    <script src="operatingsystemjs.js"></script>
+    <script>
+        // 1. Global Open Window Function (Combined for all)
+function openWindow(windowId) {
+    console.log("Opening: " + windowId);
+    
+    // File Manager ke liye check
+    if(windowId === 'fileManagerWindow') {
+        const fmOverlay = document.querySelector('.fm-overlay');
+        if(fmOverlay) fmOverlay.style.display = 'flex';
+    } 
+    // Calendar ke liye check
+    else if(windowId === 'win-calendar') {
+        const calWindow = document.getElementById('win-calendar');
+        if(calWindow) {
+            calWindow.style.display = 'flex';
+            renderCalendar(); // Dates generate karein
+        }
+    }
+}
+
+// 2. Closing Functions
+function closeFileManager() {
+    const overlay = document.querySelector('.fm-overlay');
+    if (overlay) overlay.style.display = 'none';
+    // reset minimized state so it opens full next time
+    const fm = document.querySelector('.file-manager');
+    if (fm) fm.classList.remove('minimized');
+}
+
+function minimizeFileManager() {
+    const fm = document.querySelector('.file-manager');
+    if (fm) fm.classList.toggle('minimized');
+}
+
+function closeCalendar() {
+    document.getElementById('win-calendar').style.display = 'none';
+}
+
+// 3. Calendar Rendering Logic
+function renderCalendar() {
+    const daysContainer = document.getElementById('calendarDays');
+    const monthYearText = document.getElementById('monthYear');
+    if(!daysContainer || !monthYearText) return;
+
+    const now = new Date();
+    const options = { month: 'long', year: 'numeric' };
+    monthYearText.innerText = now.toLocaleDateString('en-US', options);
+
+    const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const firstDayIndex = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+
+    daysContainer.innerHTML = "";
+    for (let x = firstDayIndex; x > 0; x--) {
+        daysContainer.innerHTML += `<div></div>`;
+    }
+    for (let i = 1; i <= lastDay; i++) {
+        const isToday = i === now.getDate() ? "today" : "";
+        daysContainer.innerHTML += `<div class="day ${isToday}">${i}</div>`;
+    }
+}
+
+// ── FILE MANAGER SYSTEM ──
+const FM = (() => {
+    const STORE = 'os_fm_v2';
+    let currentSection = 'quickAccess';
+    let selectedId = null;
+    let modalMode = null;
+
+    function getData() {
+        try { return JSON.parse(localStorage.getItem(STORE)) || { quickAccess: [], documents: [], pictures: [], downloads: [] }; }
+        catch { return { quickAccess: [], documents: [], pictures: [], downloads: [] }; }
+    }
+    function saveData(d) { localStorage.setItem(STORE, JSON.stringify(d)); }
+    function uid() { return Date.now() + Math.random().toString(36).slice(2); }
+    function setStatus(msg) { const s = document.getElementById('fm-status'); if(s) s.textContent = msg; }
+
+    function render(section) {
+        section = section || currentSection;
+        const data = getData();
+        const container = document.getElementById('section-' + section);
+        if (!container) return;
+        container.innerHTML = '';
+        const items = data[section] || [];
+        if (items.length === 0) {
+            const icon = section === 'downloads' ? 'fa-inbox' : 'fa-folder-open';
+            const msg = section === 'downloads' ? 'No downloads yet' : 'Empty';
+            container.innerHTML = `<div style="width:100%;text-align:center;padding:40px;color:#4a5568;font-size:13px;"><i class="fa-solid ${icon}" style="font-size:32px;display:block;margin-bottom:10px;opacity:0.4;"></i>${msg}</div>`;
+            return;
+        }
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'folder-item' + (selectedId === item.id ? ' selected' : '');
+            div.dataset.id = item.id;
+
+            if (item.type === 'picture') {
+                div.innerHTML = `<img src="${item.dataUrl}" style="width:64px;height:64px;object-fit:cover;border-radius:6px;"><span class="folder-name">${item.name}</span>`;
+                div.ondblclick = () => { document.getElementById('previewImg').src = item.dataUrl; document.getElementById('imgPreview').style.display = 'flex'; };
+            } else if (item.type === 'folder') {
+                div.innerHTML = `<i class="fa-solid fa-folder folder-icon"></i><span class="folder-name">${item.name}</span>`;
+            } else {
+                const iconMap = { pdf: 'fa-file-pdf', doc: 'fa-file-word', docx: 'fa-file-word', xls: 'fa-file-excel', xlsx: 'fa-file-excel', ppt: 'fa-file-powerpoint', pptx: 'fa-file-powerpoint', txt: 'fa-file-lines', html: 'fa-file-code', css: 'fa-file-code', js: 'fa-file-code', php: 'fa-file-code', json: 'fa-file-code', xml: 'fa-file-code', py: 'fa-file-code' };
+                const ext = item.name.split('.').pop().toLowerCase();
+                const icon = iconMap[ext] || 'fa-file';
+                div.innerHTML = `<i class="fa-solid ${icon} folder-icon" style="color:#5b8cff;"></i><span class="folder-name">${item.name}</span>`;
+                // text/code files (have content) → open in editor; uploaded binary files → download
+                if (item.content !== undefined && item.content !== null) {
+                    div.ondblclick = () => openFile(item.id);
+                } else if (item.dataUrl) {
+                    div.ondblclick = () => { const a = document.createElement('a'); a.href = item.dataUrl; a.download = item.name; a.click(); };
+                }
+            }
+
+            div.onclick = (e) => { e.stopPropagation(); selectItem(item.id); };
+            div.oncontextmenu = (e) => { e.preventDefault(); selectItem(item.id); showContextMenu(e.clientX, e.clientY); };
+            container.appendChild(div);
+        });
+    }
+
+    function selectItem(id) {
+        selectedId = id;
+        render();
+        const data = getData();
+        const items = data[currentSection] || [];
+        const item = items.find(i => i.id === id);
+        // show action buttons in toolbar
+        const isFolder = item && item.type === 'folder';
+        ['renameBtn','deleteBtn','toolbarDivider'].forEach(b => { const e = document.getElementById(b); if(e) e.style.display = id ? 'inline-flex' : 'none'; });
+        const divider = document.getElementById('toolbarDivider'); if(divider && id) divider.style.display = 'inline-block';
+        // download — show for all items including folders
+        const dlBtn = document.getElementById('downloadBtn'); if(dlBtn) dlBtn.style.display = id ? 'inline-flex' : 'none';
+        // edit btn only for text/code files
+        const isEditable = item && item.type === 'file' && item.content !== undefined && item.content !== null;
+        const editEl = document.getElementById('editBtn'); if(editEl) editEl.style.display = isEditable ? 'inline-flex' : 'none';
+        const ctxEdit = document.getElementById('ctxEditBtn'); if(ctxEdit) ctxEdit.style.display = isEditable ? 'inline-flex' : 'none';
+        if (item) setStatus('Selected: ' + item.name);
+    }
+
+    function deselectAll(e) {
+        if (e && e.target !== e.currentTarget) return;
+        selectedId = null;
+        render();
+        ['editBtn','downloadBtn','renameBtn','deleteBtn','toolbarDivider'].forEach(b => { const e = document.getElementById(b); if(e) e.style.display = 'none'; });
+        setStatus('Ready');
+    }
+
+    function downloadSelected() {
+        hideContextMenu();
+        if (!selectedId) { setStatus('Select a file to download'); return; }
+        const data = getData();
+        const item = data[currentSection]?.find(i => i.id === selectedId);
+        if (!item) return;
+
+        let content, downloadName;
+        if (item.type === 'folder') {
+            const info = `Folder Name: ${item.name}\nType: Folder\nExported: ${new Date().toLocaleString()}\n`;
+            content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(info);
+            downloadName = item.name + '_folder.txt';
+        } else {
+            content = item.dataUrl || ('data:text/plain;charset=utf-8,' + encodeURIComponent(item.content || ''));
+            downloadName = item.name;
+        }
+        const a = document.createElement('a');
+        a.href = content;
+        a.download = downloadName;
+        a.click();
+
+        // save to Downloads section
+        const alreadyThere = data.downloads.some(d => d.name === item.name);
+        if (!alreadyThere) {
+            data.downloads = data.downloads.filter(d => d.id !== 'empty-placeholder');
+            data.downloads.push({ id: uid(), name: item.name, type: item.type, dataUrl: item.dataUrl || null, content: item.content || null, downloadedAt: new Date().toLocaleDateString('en-GB') });
+            saveData(data);
+        }
+        setStatus('Downloaded: ' + item.name);
+    }
+
+    function switchSection(section, el) {
+        currentSection = section;
+        selectedId = null;
+        document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+        if (el) el.classList.add('active');
+        ['quickAccess','documents','pictures','downloads'].forEach(s => {
+            const sec = document.getElementById('section-' + s);
+            if (sec) sec.style.display = s === section ? 'flex' : 'none';
+        });
+        // show/hide section-specific toolbar buttons
+        const isQA = section === 'quickAccess';
+        const isDoc = section === 'documents';
+        const isPic = section === 'pictures';
+        ['btnNewFolder','btnNewFile'].forEach(b => { const e = document.getElementById(b); if(e) e.style.display = isQA ? 'inline-flex' : 'none'; });
+        const ud = document.getElementById('btnUploadDoc'); if(ud) ud.style.display = isDoc ? 'inline-flex' : 'none';
+        const up = document.getElementById('btnUploadPic'); if(up) up.style.display = isPic ? 'inline-flex' : 'none';
+        // hide action buttons on section switch
+        ['editBtn','downloadBtn','renameBtn','deleteBtn','toolbarDivider','ctxEditBtn'].forEach(b => { const e = document.getElementById(b); if(e) e.style.display = 'none'; });
+        render(section);
+    }
+
+    function openModal(mode) {
+        modalMode = mode;
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('fileContentInput');
+        const btn = document.getElementById('modalConfirmBtn');
+        if (mode === 'folder') { title.textContent = 'New Folder'; content.style.display = 'none'; btn.textContent = 'Create'; }
+        else if (mode === 'file') { title.textContent = 'New File'; content.style.display = 'block'; btn.textContent = 'Create'; }
+        else if (mode === 'rename') { title.textContent = 'Rename'; content.style.display = 'none'; btn.textContent = 'Rename'; }
+        const input = document.getElementById('folderInput');
+        input.value = mode === 'rename' ? (getData()[currentSection]?.find(i => i.id === selectedId)?.name || '') : '';
+        document.getElementById('customModal').style.display = 'flex';
+        setTimeout(() => { input.focus(); input.select(); }, 100);
+    }
+
+    function closeModal() { document.getElementById('customModal').style.display = 'none'; }
+
+    function confirmCreation() {
+        const name = document.getElementById('folderInput').value.trim();
+        if (!name) return;
+        const data = getData();
+        if (modalMode === 'folder') {
+            data[currentSection].push({ id: uid(), name, type: 'folder' });
+            setStatus('Folder created: ' + name);
+        } else if (modalMode === 'file') {
+            const content = document.getElementById('fileContentInput').value;
+            data[currentSection].push({ id: uid(), name, type: 'file', content });
+            setStatus('File created: ' + name);
+        } else if (modalMode === 'rename') {
+            const item = data[currentSection].find(i => i.id === selectedId);
+            if (item) { item.name = name; setStatus('Renamed to: ' + name); }
+        }
+        saveData(data);
+        closeModal();
+        render();
+    }
+
+    function renameSelected() {
+        hideContextMenu();
+        if (!selectedId) { setStatus('Select an item first'); return; }
+        openModal('rename');
+    }
+
+    function deleteSelected() {
+        hideContextMenu();
+        if (!selectedId) { setStatus('Select an item first'); return; }
+        const data = getData();
+        const item = data[currentSection]?.find(i => i.id === selectedId);
+        if (!item) return;
+        if (!confirm('Delete "' + item.name + '"?')) return;
+        data[currentSection] = data[currentSection].filter(i => i.id !== selectedId);
+        saveData(data);
+        selectedId = null;
+        render();
+        ['editBtn','downloadBtn','renameBtn','deleteBtn','toolbarDivider'].forEach(b => { const e = document.getElementById(b); if(e) e.style.display = 'none'; });
+        setStatus('Deleted');
+    }
+
+    function handleDocUpload(e) {
+        const files = e.target.files;
+        if (!files.length) return;
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const data = getData();
+                data.documents.push({ id: uid(), name: file.name, type: 'document', dataUrl: ev.target.result });
+                saveData(data);
+                render('documents');
+                setStatus('Uploaded: ' + file.name);
+            };
+            reader.readAsDataURL(file);
+        });
+        e.target.value = '';
+    }
+
+    function handlePicUpload(e) {
+        const files = e.target.files;
+        if (!files.length) return;
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const data = getData();
+                data.pictures.push({ id: uid(), name: file.name, type: 'picture', dataUrl: ev.target.result });
+                saveData(data);
+                render('pictures');
+                setStatus('Uploaded: ' + file.name);
+            };
+            reader.readAsDataURL(file);
+        });
+        e.target.value = '';
+    }
+
+    let fileEditorItemId = null;
+
+    function openFile(id) {
+        id = id || selectedId;
+        if (!id) return;
+        const data = getData();
+        const item = data[currentSection]?.find(i => i.id === id) ||
+                     Object.values(data).flat().find(i => i && i.id === id);
+        if (!item) return;
+        fileEditorItemId = id;
+        document.getElementById('fileEditorTitle').textContent = item.name;
+        document.getElementById('fileEditorContent').value = item.content || '';
+        // detect language label
+        const ext = item.name.split('.').pop().toLowerCase();
+        const langMap = { html: 'HTML', css: 'CSS', js: 'JavaScript', php: 'PHP', json: 'JSON', xml: 'XML', py: 'Python', txt: 'Plain Text', md: 'Markdown' };
+        document.getElementById('fileEditorLang').textContent = langMap[ext] || 'Plain Text';
+        document.getElementById('fileEditorOverlay').style.display = 'flex';
+        setEditorStatus('saved');
+        setTimeout(() => document.getElementById('fileEditorContent').focus(), 100);
+    }
+
+    function setEditorStatus(state) {
+        const el = document.getElementById('fileEditorSaveStatus');
+        if (!el) return;
+        if (state === 'saved') {
+            el.textContent = '✓ Saved';
+            el.style.display = 'inline-block';
+            el.style.background = 'rgba(72,199,116,0.15)';
+            el.style.color = '#48c774';
+            el.style.border = '1px solid rgba(72,199,116,0.3)';
+        } else {
+            el.textContent = '● Unsaved';
+            el.style.display = 'inline-block';
+            el.style.background = 'rgba(255,183,0,0.12)';
+            el.style.color = '#ffb700';
+            el.style.border = '1px solid rgba(255,183,0,0.3)';
+        }
+    }
+
+    function saveFileEdit() {
+        if (!fileEditorItemId) return;
+        const newContent = document.getElementById('fileEditorContent').value;
+        const data = getData();
+        let saved = false;
+        ['quickAccess','documents','pictures','downloads'].forEach(sec => {
+            const item = (data[sec] || []).find(i => i.id === fileEditorItemId);
+            if (item) { item.content = newContent; saved = true; }
+        });
+        if (saved) { saveData(data); setStatus('Saved: ' + document.getElementById('fileEditorTitle').textContent); setEditorStatus('saved'); }
+    }
+
+    function showContextMenu(x, y) {
+        const menu = document.getElementById('contextMenu');
+        menu.style.display = 'block';
+        menu.style.left = x + 'px';
+        menu.style.top = y + 'px';
+    }
+    function hideContextMenu() { document.getElementById('contextMenu').style.display = 'none'; }
+
+    document.addEventListener('click', hideContextMenu);
+
+    function init() {
+        render('quickAccess');
+        // quickAccess is default — its buttons are already visible
+    }
+
+    return { init, switchSection, openModal, closeModal, confirmCreation, renameSelected, deleteSelected, downloadSelected, deselectAll, handleDocUpload, handlePicUpload, openFile, saveFileEdit, setEditorStatus };
+})();
+
+function switchSection(s, el) { FM.switchSection(s, el); }
+function openModal(m) { FM.openModal(m); }
+function closeModal() { FM.closeModal(); }
+function confirmCreation() { FM.confirmCreation(); }
+function renameSelected() { FM.renameSelected(); }
+function deleteSelected() { FM.deleteSelected(); }
+function deselectAll(e) { FM.deselectAll(e); }
+function handleDocUpload(e) { FM.handleDocUpload(e); }
+function handlePicUpload(e) { FM.handlePicUpload(e); }
+function downloadSelected() { FM.downloadSelected(); }
+function openFile(id) { FM.openFile(id); }
+function saveFileEdit() { FM.saveFileEdit(); }
+
+document.getElementById('folderInput').addEventListener('keydown', e => { if (e.key === 'Enter') FM.confirmCreation(); });
+document.getElementById('fileEditorContent').addEventListener('input', () => { FM.setEditorStatus('unsaved'); });
+
+
+
+// ==========================================
+// 1. GLOBAL WINDOW CONTROL (File Manager & Calendar)
+// ==========================================
+function openWindow(windowId) {
+    console.log("Attempting to open:", windowId);
+    if (windowId === 'fileManagerWindow') {
+        const fmOverlay = document.getElementById('file-overlay');
+        if (fmOverlay) fmOverlay.style.display = 'flex';
+        return;
+    }
+    const targetWindow = document.getElementById(windowId);
+    if (targetWindow) {
+        targetWindow.style.display = 'flex';
+        if (windowId === 'win-calendar') renderCalendar();
+    }
+}
+
+function closeWindow(id) {
+    const win = document.getElementById(id);
+    if(win) win.style.display = 'none';
+    // Overlay base close
+    if(id === 'fileManagerWindow') document.querySelector('.fm-overlay').style.display = 'none';
+}
+
+// ==========================================
+// 2. DESKTOP ICONS CLICK HANDLER (Chrome & Others)
+// ==========================================
+document.querySelectorAll('.dock-icon, .icon, .desktop-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const name = this.title || this.querySelector('span')?.innerText || "";
+        console.log(`Icon Clicked: ${name}`);
+
+        if (name.toLowerCase() === "chrome") {
+            // Agar aapne chromeWindow ka div banaya hai to wo khulega
+            const chromeWin = document.getElementById('chromeWindow');
+            if(chromeWin) chromeWin.style.display = 'block';
+            else window.open('https://www.google.com', '_blank'); // Warna new tab
+        }
+        // Dashboard Button Logic
+        if (this.id === 'dashboardBtn') {
+            window.location.href = 'sensory-dashboard.html';
+        }
+    });
+});
+
+// ==========================================
+// 3. SETTINGS & BACKGROUND THEMES
+// ==========================================
+const themes = ['#0d1130', '#1a0d30', '#0d2b30', '#300d0d'];
+let themeIndex = 0;
+
+function changeBg(color) {
+    const bg = document.getElementById('desktopBG') || document.body;
+    bg.style.background = color;
+}
+
+const settingsBtn = document.getElementById('settingsBtn');
+if(settingsBtn) {
+    settingsBtn.addEventListener('click', () => {
+        themeIndex = (themeIndex + 1) % themes.length;
+        document.body.style.backgroundColor = themes[themeIndex];
+        settingsBtn.style.transform = 'rotate(180deg)';
+        setTimeout(() => settingsBtn.style.transform = '', 300);
+    });
+}
+
+// ==========================================
+// 4. SEARCH FUNCTIONALITY
+// ==========================================
+const searchInput = document.getElementById('desktopSearch');
+if(searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('.desktop-item').forEach(icon => {
+            const name = icon.getAttribute('data-name')?.toLowerCase() || "";
+            if (name.includes(term)) {
+                icon.style.display = 'flex';
+                icon.style.opacity = '1';
+            } else {
+                icon.style.display = 'none';
+                icon.style.opacity = '0';
+            }
+        });
+    });
+}
+
+// ==========================================
+// 5. NOTES SYSTEM (LocalStorage)
+// ==========================================
+function saveNote() {
+    const input = document.getElementById('noteInput');
+    if (!input || input.value.trim() === "") return;
+
+    const savedNotes = JSON.parse(localStorage.getItem('myDesktopNotes')) || [];
+    savedNotes.push(input.value);
+    localStorage.setItem('myDesktopNotes', JSON.stringify(savedNotes));
+
+    renderNoteUI(input.value);
+    input.value = "";
+}
+
+function loadNotes() {
+    const savedNotes = JSON.parse(localStorage.getItem('myDesktopNotes')) || [];
+    const list = document.getElementById('notesList');
+    if(list) {
+        list.innerHTML = ""; 
+        savedNotes.forEach(noteText => renderNoteUI(noteText));
+    }
+}
+
+function renderNoteUI(text) {
+    const list = document.getElementById('notesList');
+    if(!list) return;
+    const noteDiv = document.createElement('div');
+    noteDiv.className = 'note-item';
+    noteDiv.innerText = text;
+    list.prepend(noteDiv);
+}
+
+// ==========================================
+// 6. CALENDAR RENDER LOGIC
+// ==========================================
+function renderCalendar() {
+    const daysContainer = document.getElementById('calendarDays');
+    const monthYearText = document.getElementById('monthYear');
+    if(!daysContainer || !monthYearText) return;
+
+    const now = new Date();
+    monthYearText.innerText = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+    const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const firstDayIndex = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+
+    daysContainer.innerHTML = "";
+    for (let x = firstDayIndex; x > 0; x--) daysContainer.innerHTML += `<div></div>`;
+    for (let i = 1; i <= lastDay; i++) {
+        const isToday = i === now.getDate() ? "today" : "";
+        daysContainer.innerHTML += `<div class="day ${isToday}">${i}</div>`;
+    }
+}
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
+    FM.init();
+});
+    </script>
+</body>
+
+</html>
