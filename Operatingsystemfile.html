@@ -661,8 +661,17 @@ function openWindow(windowId) {
 function closeWindow(id) {
     const win = document.getElementById(id);
     if(win) win.style.display = 'none';
-    // Overlay base close
     if(id === 'fileManagerWindow') document.querySelector('.fm-overlay').style.display = 'none';
+}
+
+function openChrome() {
+    const win = document.getElementById('chromeWindow');
+    if(win) win.style.display = 'block';
+}
+
+function closeChrome() {
+    const win = document.getElementById('chromeWindow');
+    if(win) win.style.display = 'none';
 }
 
 // ==========================================
